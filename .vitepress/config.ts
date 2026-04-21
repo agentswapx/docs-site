@@ -84,7 +84,7 @@ function sidebar(locale: 'en' | 'zh'): DefaultTheme.Sidebar {
 }
 
 export default defineConfig({
-  title: 'ATXSwap',
+  title: 'ATXSwap Docs',
   description: 'ATXSwap official documentation — product guides & developer docs',
   cleanUrls: true,
   lastUpdated: true,
@@ -104,7 +104,7 @@ export default defineConfig({
     root: {
       label: 'English',
       lang: 'en-US',
-      title: 'ATXSwap',
+      title: 'ATXSwap Docs',
       description: 'ATXSwap official documentation — product guides & developer docs',
       themeConfig: {
         nav: nav('en'),
@@ -137,7 +137,7 @@ export default defineConfig({
       label: '简体中文',
       lang: 'zh-CN',
       link: '/zh/',
-      title: 'ATXSwap',
+      title: 'ATXSwap 文档',
       description: 'ATXSwap 官方文档 — 产品说明 & 开发者文档',
       themeConfig: {
         nav: nav('zh'),
