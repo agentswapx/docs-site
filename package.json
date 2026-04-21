@@ -1,0 +1,15 @@
+{
+  "name": "@atxswap/docs-site",
+  "version": "0.0.1",
+  "private": true,
+  "type": "module",
+  "description": "ATXSwap official documentation site (product & developer docs) built with VitePress.",
+  "scripts": {
+    "docs:dev": "vitepress dev",
+    "docs:build": "vitepress build",
+    "docs:preview": "vitepress preview"
+  },
+  "devDependencies": {
+    "vitepress": "^2.0.0-alpha.17"
+  }
+}

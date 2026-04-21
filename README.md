@@ -1,19 +1,46 @@
 # ATXSwap Docs Site
 
-ATXSwap 官方文档站，包含产品说明文档以及开发者文档。
+[English](./README.md) | [简体中文](./README.zh.md)
 
-## 内容范围
+The official documentation site for ATXSwap, covering both product guides and developer documentation.
 
-- 产品介绍与使用指南
-- 智能合约说明
-- 前端 / SDK 开发文档
-- API 参考
-- 常见问题
+## Scope
 
-## 本地开发
+- Product introduction and usage guides
+- Smart contract documentation
+- Frontend / SDK developer docs
+- API reference
+- FAQ
 
-文档站点的开发与构建说明将在初始化框架后补充。
+## Local Development
 
-## 关联仓库
+Built with [VitePress](https://vitepress.dev/).
 
-本仓库作为 [`agentswapx/atx`](https://github.com/agentswapx) 主仓库的子模块挂载在根目录 `docs-site/` 下。
+```bash
+# Install dependencies
+npm install
+
+# Start the local dev server (default http://localhost:5173)
+npm run docs:dev
+
+# Build the static site into .vitepress/dist
+npm run docs:build
+
+# Preview the production build locally
+npm run docs:preview
+```
+
+## Project Structure
+
+```
+docs-site/
+├── .vitepress/
+│   └── config.ts        # Site config (nav, sidebar, theme, etc.)
+├── index.md             # Home page
+├── guide/               # User guide
+└── dev/                 # Developer docs
+```
+
+## Related Repositories
+
+This repository is mounted as a submodule at `docs-site/` of the main [`agentswapx/atx`](https://github.com/agentswapx) repository.
