@@ -1,18 +1,18 @@
-# 快速开始
+# Getting Started
 
-欢迎使用 ATXSwap。本指南将带你快速了解协议的核心功能与使用方式。
+Welcome to ATXSwap. This guide walks you through the core features and how to start using the protocol.
 
-## 什么是 ATXSwap
+## What is ATXSwap
 
-ATXSwap 是部署在 BNB Smart Chain（BSC）上的去中心化代币交易协议，针对 Agent 场景做了优化。
+ATXSwap is a decentralized token exchange protocol deployed on BNB Smart Chain (BSC), optimized for agent-driven scenarios.
 
-## 主要功能
+## Key Features
 
-- ATX 与 USDT 之间的兑换
-- PancakeSwap V3 流动性管理
-- 钱包与代币转账
+- Swap between ATX and USDT
+- PancakeSwap V3 liquidity management
+- Wallet and token transfers
 
-## 下一步
+## Next Steps
 
-- 查看 [开发文档](/dev/overview) 了解集成方式
-- 访问 [GitHub](https://github.com/agentswapx) 获取源码
+- Check the [Developer Docs](/dev/overview) for integration details
+- Visit [GitHub](https://github.com/agentswapx) for the source code

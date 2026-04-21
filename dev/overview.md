@@ -1,16 +1,16 @@
-# 开发文档概览
+# Developer Overview
 
-本节面向开发者，介绍 ATXSwap 的智能合约、SDK 与 API 的集成方式。
+This section is aimed at developers and covers ATXSwap's smart contracts, SDKs, and APIs.
 
-## 仓库结构
+## Repository Layout
 
-- `contracts/` — Solidity 智能合约
+- `contracts/` — Solidity smart contracts
 - `packages/atxswap-sdk/` — TypeScript SDK
-- `frontend/` — 前端应用
-- `docs-site/` — 当前文档站（VitePress）
+- `frontend/` — Frontend application
+- `docs-site/` — This documentation site (VitePress)
 
-## 即将完善
+## Coming Soon
 
-- 合约接口说明
-- SDK 使用示例
-- 部署与运维指南
+- Contract interface reference
+- SDK usage examples
+- Deployment & operations guide
