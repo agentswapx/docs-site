@@ -7,14 +7,14 @@ function nav(locale: 'en' | 'zh'): DefaultTheme.NavItem[] {
   if (locale === 'zh') {
     return [
       { text: '指南', link: '/zh/guide/getting-started', activeMatch: '/zh/guide/' },
-      { text: '技能', link: '/zh/skill/install-agent', activeMatch: '/zh/skill/' },
+      { text: '技能', link: '/zh/skill/install-openclaw', activeMatch: '/zh/skill/' },
       { text: '开发者', link: '/zh/dev/overview', activeMatch: '/zh/dev/' },
       { text: 'GitHub', link: GITHUB_ORG },
     ]
   }
   return [
     { text: 'Guide', link: '/guide/getting-started', activeMatch: '/guide/' },
-    { text: 'Skill', link: '/skill/install-agent', activeMatch: '/skill/' },
+    { text: 'Skill', link: '/skill/install-openclaw', activeMatch: '/skill/' },
     { text: 'Developers', link: '/dev/overview', activeMatch: '/dev/' },
     { text: 'GitHub', link: GITHUB_ORG },
   ]
