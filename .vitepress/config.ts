@@ -6,46 +6,74 @@ const REPO_EDIT_BASE = 'https://github.com/agentswapx/docs-site/edit/main'
 function nav(locale: 'en' | 'zh'): DefaultTheme.NavItem[] {
   if (locale === 'zh') {
     return [
-      { text: '指南', link: '/zh/guide/getting-started' },
-      { text: '开发者', link: '/zh/dev/overview' },
+      { text: '指南', link: '/zh/guide/getting-started', activeMatch: '/zh/guide/' },
+      { text: '开发者', link: '/zh/dev/overview', activeMatch: '/zh/dev/' },
       { text: 'GitHub', link: GITHUB_ORG },
     ]
   }
   return [
-    { text: 'Guide', link: '/guide/getting-started' },
-    { text: 'Developers', link: '/dev/overview' },
+    { text: 'Guide', link: '/guide/getting-started', activeMatch: '/guide/' },
+    { text: 'Developers', link: '/dev/overview', activeMatch: '/dev/' },
     { text: 'GitHub', link: GITHUB_ORG },
   ]
 }
 
 function sidebar(locale: 'en' | 'zh'): DefaultTheme.Sidebar {
   if (locale === 'zh') {
+    const guideSidebar: DefaultTheme.SidebarItem[] = [
+      {
+        text: '入门',
+        collapsed: false,
+        items: [{ text: '快速开始', link: '/zh/guide/getting-started' }],
+      },
+      {
+        text: '安装 ATX 技能',
+        collapsed: false,
+        items: [
+          { text: 'Claude / Cursor / Codex', link: '/zh/guide/install-skill-agent' },
+          { text: 'ClawHub / OpenClaw', link: '/zh/guide/install-skill-openclaw' },
+        ],
+      },
+    ]
     return {
-      '/zh/guide/': [
-        {
-          text: '入门',
-          items: [{ text: '快速开始', link: '/zh/guide/getting-started' }],
-        },
-      ],
+      '/zh/guide/': guideSidebar,
       '/zh/dev/': [
         {
-          text: '开发文档',
-          items: [{ text: '概览', link: '/zh/dev/overview' }],
+          text: '入门',
+          collapsed: false,
+          items: [
+            { text: '概览', link: '/zh/dev/overview' },
+            { text: 'SDK 开发者指南', link: '/zh/dev/sdk-guide' },
+          ],
         },
       ],
     }
   }
+  const guideSidebar: DefaultTheme.SidebarItem[] = [
+    {
+      text: 'Introduction',
+      collapsed: false,
+      items: [{ text: 'Getting Started', link: '/guide/getting-started' }],
+    },
+    {
+      text: 'Install ATX Skill',
+      collapsed: false,
+      items: [
+        { text: 'Claude / Cursor / Codex', link: '/guide/install-skill-agent' },
+        { text: 'ClawHub / OpenClaw', link: '/guide/install-skill-openclaw' },
+      ],
+    },
+  ]
   return {
-    '/guide/': [
-      {
-        text: 'Introduction',
-        items: [{ text: 'Getting Started', link: '/guide/getting-started' }],
-      },
-    ],
+    '/guide/': guideSidebar,
     '/dev/': [
       {
-        text: 'Developer Docs',
-        items: [{ text: 'Overview', link: '/dev/overview' }],
+        text: 'Introduction',
+        collapsed: false,
+        items: [
+          { text: 'Overview', link: '/dev/overview' },
+          { text: 'SDK Developer Guide', link: '/dev/sdk-guide' },
+        ],
       },
     ],
   }
@@ -56,6 +84,8 @@ export default defineConfig({
   description: 'ATXSwap official documentation — product guides & developer docs',
   cleanUrls: true,
   lastUpdated: true,
+
+  srcExclude: ['README.md', 'README.zh.md'],
 
   appearance: 'dark',
 

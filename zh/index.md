@@ -8,19 +8,25 @@ hero:
   actions:
     - theme: brand
       text: 快速开始
-      link: /guide/getting-started
+      link: /zh/guide/getting-started
     - theme: alt
-      text: 开发文档
-      link: /dev/overview
+      text: 安装 ATX 技能
+      link: /zh/guide/install-skill-agent
     - theme: alt
       text: GitHub
       link: https://github.com/agentswapx
 
 features:
-  - title: 简洁易用
-    details: 直观的产品说明，帮助用户快速上手 ATXSwap 的交易、流动性与代币管理。
+  - title: 让你的 AI 直接用 ATX
+    details: 在 Claude Desktop、Cursor IDE、Codex CLI 中安装 ATX 技能，用自然语言操作 BSC 链上资产。
+    link: /zh/guide/install-skill-agent
+    linkText: 给 AI 安装技能
+  - title: ClawHub / OpenClaw 集成
+    details: 通过 ClawHub 注册表安装 ATX 技能，让你的 OpenClaw 智能体自主完成交易与资产管理。
+    link: /zh/guide/install-skill-openclaw
+    linkText: ClawHub 安装指南
   - title: 面向开发者
     details: 完整的合约 / SDK / API 文档，支持自助集成与二次开发。
-  - title: 开源透明
-    details: 所有合约、SDK 与文档均开源，欢迎社区共建。
+    link: /zh/dev/overview
+    linkText: 开发文档
 ---
