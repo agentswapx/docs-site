@@ -16,8 +16,8 @@ ATXSwap is a decentralized token exchange protocol deployed on BNB Smart Chain (
 
 Want to operate ATX with natural language from your favorite AI tool? Install the ATX Skill:
 
-- [Claude Desktop / Cursor IDE / Codex CLI](/guide/install-skill-agent)
-- [ClawHub / OpenClaw agents](/guide/install-skill-openclaw)
+- [Claude Desktop / Cursor IDE / Codex CLI](/skill/install-agent)
+- [ClawHub / OpenClaw agents](/skill/install-openclaw)
 
 ## Next Steps
 

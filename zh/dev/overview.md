@@ -5,7 +5,7 @@
 ## 从这里开始
 
 - **要做 Node.js / 后端集成？** → [SDK 开发者指南](/zh/dev/sdk-guide)
-- **想直接用现成命令而不是写 TypeScript？** → [安装 ATX 技能](/zh/guide/install-skill-agent)
+- **想直接用现成命令而不是写 TypeScript？** → [安装 ATX 技能](/zh/skill/install-agent)
 - **想看源代码？** → [GitHub: agentswapx](https://github.com/agentswapx)
 
 ## 仓库结构

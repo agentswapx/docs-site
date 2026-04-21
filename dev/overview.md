@@ -5,7 +5,7 @@ This section is aimed at developers who want to build on top of ATXSwap. It cove
 ## Where to Start
 
 - **Building a Node.js / backend integration?** → [SDK Developer Guide](/dev/sdk-guide)
-- **Want ready-made commands instead of TypeScript?** → [Install ATX Skill](/guide/install-skill-agent)
+- **Want ready-made commands instead of TypeScript?** → [Install ATX Skill](/skill/install-agent)
 - **Looking for the source code?** → [GitHub: agentswapx](https://github.com/agentswapx)
 
 ## Repository Layout

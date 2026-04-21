@@ -7,7 +7,7 @@ This page is designed for developers who are touching ATX for the first time. It
 - **What you can do**: Query price and balances, manage keystore wallets, swap ATX, transfer tokens, and manage PancakeSwap V3 liquidity
 
 ::: tip
-If you only want ready-made scripts instead of writing TypeScript, check the [Install ATX Skill](/guide/install-skill-agent) guide.
+If you only want ready-made scripts instead of writing TypeScript, check the [Install ATX Skill](/skill/install-agent) guide.
 :::
 
 ## Quick Start
@@ -284,7 +284,7 @@ Once your first example is working, these are usually the next APIs worth learni
 You can keep going with these resources:
 
 - [SDK GitHub repository](https://github.com/agentswapx/atxswap-sdk)
-- [Install ATX Skill](/guide/install-skill-agent) for script-first workflows
+- [Install ATX Skill](/skill/install-agent) for script-first workflows
 
 If this is your first integration, the recommended order is:
 

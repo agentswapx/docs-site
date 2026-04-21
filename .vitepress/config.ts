@@ -7,12 +7,14 @@ function nav(locale: 'en' | 'zh'): DefaultTheme.NavItem[] {
   if (locale === 'zh') {
     return [
       { text: '指南', link: '/zh/guide/getting-started', activeMatch: '/zh/guide/' },
+      { text: '技能', link: '/zh/skill/install-agent', activeMatch: '/zh/skill/' },
       { text: '开发者', link: '/zh/dev/overview', activeMatch: '/zh/dev/' },
       { text: 'GitHub', link: GITHUB_ORG },
     ]
   }
   return [
     { text: 'Guide', link: '/guide/getting-started', activeMatch: '/guide/' },
+    { text: 'Skill', link: '/skill/install-agent', activeMatch: '/skill/' },
     { text: 'Developers', link: '/dev/overview', activeMatch: '/dev/' },
     { text: 'GitHub', link: GITHUB_ORG },
   ]
@@ -20,23 +22,24 @@ function nav(locale: 'en' | 'zh'): DefaultTheme.NavItem[] {
 
 function sidebar(locale: 'en' | 'zh'): DefaultTheme.Sidebar {
   if (locale === 'zh') {
-    const guideSidebar: DefaultTheme.SidebarItem[] = [
-      {
-        text: '入门',
-        collapsed: false,
-        items: [{ text: '快速开始', link: '/zh/guide/getting-started' }],
-      },
-      {
-        text: '安装 ATX 技能',
-        collapsed: false,
-        items: [
-          { text: 'Claude / Cursor / Codex', link: '/zh/guide/install-skill-agent' },
-          { text: 'ClawHub / OpenClaw', link: '/zh/guide/install-skill-openclaw' },
-        ],
-      },
-    ]
     return {
-      '/zh/guide/': guideSidebar,
+      '/zh/guide/': [
+        {
+          text: '入门',
+          collapsed: false,
+          items: [{ text: '快速开始', link: '/zh/guide/getting-started' }],
+        },
+      ],
+      '/zh/skill/': [
+        {
+          text: '安装 ATX 技能',
+          collapsed: false,
+          items: [
+            { text: 'Claude / Cursor / Codex', link: '/zh/skill/install-agent' },
+            { text: 'ClawHub / OpenClaw', link: '/zh/skill/install-openclaw' },
+          ],
+        },
+      ],
       '/zh/dev/': [
         {
           text: '入门',
@@ -49,23 +52,24 @@ function sidebar(locale: 'en' | 'zh'): DefaultTheme.Sidebar {
       ],
     }
   }
-  const guideSidebar: DefaultTheme.SidebarItem[] = [
-    {
-      text: 'Introduction',
-      collapsed: false,
-      items: [{ text: 'Getting Started', link: '/guide/getting-started' }],
-    },
-    {
-      text: 'Install ATX Skill',
-      collapsed: false,
-      items: [
-        { text: 'Claude / Cursor / Codex', link: '/guide/install-skill-agent' },
-        { text: 'ClawHub / OpenClaw', link: '/guide/install-skill-openclaw' },
-      ],
-    },
-  ]
   return {
-    '/guide/': guideSidebar,
+    '/guide/': [
+      {
+        text: 'Introduction',
+        collapsed: false,
+        items: [{ text: 'Getting Started', link: '/guide/getting-started' }],
+      },
+    ],
+    '/skill/': [
+      {
+        text: 'Install ATX Skill',
+        collapsed: false,
+        items: [
+          { text: 'Claude / Cursor / Codex', link: '/skill/install-agent' },
+          { text: 'ClawHub / OpenClaw', link: '/skill/install-openclaw' },
+        ],
+      },
+    ],
     '/dev/': [
       {
         text: 'Introduction',

@@ -7,7 +7,7 @@
 - **覆盖能力**: 查询价格和余额、管理 keystore 钱包、交换 ATX、转账、管理 PancakeSwap V3 流动性
 
 ::: tip
-如果你只是想直接运行现成脚本，而不是写 TypeScript 代码，可以参考 [安装 ATX 技能](/zh/guide/install-skill-agent) 指南。
+如果你只是想直接运行现成脚本，而不是写 TypeScript 代码，可以参考 [安装 ATX 技能](/zh/skill/install-agent) 指南。
 :::
 
 ## 5 分钟快速开始
@@ -284,7 +284,7 @@ main().catch(console.error);
 还可以继续参考这些资料：
 
 - [SDK GitHub 仓库](https://github.com/agentswapx/atxswap-sdk)
-- [安装 ATX 技能](/zh/guide/install-skill-agent)，适合想直接运行脚本命令的场景
+- [安装 ATX 技能](/zh/skill/install-agent)，适合想直接运行脚本命令的场景
 
 如果你是第一次集成，推荐按这个顺序继续：
 
