@@ -35,8 +35,8 @@ function sidebar(locale: 'en' | 'zh'): DefaultTheme.Sidebar {
           text: '安装 ATX 技能',
           collapsed: false,
           items: [
-            { text: 'Claude / Cursor / Codex', link: '/zh/skill/install-agent' },
-            { text: 'ClawHub / OpenClaw', link: '/zh/skill/install-openclaw' },
+            { text: 'OpenClaw', link: '/zh/skill/install-openclaw' },
+            { text: 'Codex', link: '/zh/skill/install-agent' },
           ],
         },
       ],
@@ -65,8 +65,8 @@ function sidebar(locale: 'en' | 'zh'): DefaultTheme.Sidebar {
         text: 'Install ATX Skill',
         collapsed: false,
         items: [
-          { text: 'Claude / Cursor / Codex', link: '/skill/install-agent' },
-          { text: 'ClawHub / OpenClaw', link: '/skill/install-openclaw' },
+          { text: 'OpenClaw', link: '/skill/install-openclaw' },
+          { text: 'Codex', link: '/skill/install-agent' },
         ],
       },
     ],
