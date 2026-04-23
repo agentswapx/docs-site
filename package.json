@@ -5,6 +5,9 @@
   "type": "module",
   "description": "ATXSwap official documentation site (product & developer docs) built with VitePress.",
   "scripts": {
+    "dev": "vitepress dev",
+    "build": "vitepress build",
+    "preview": "vitepress preview",
     "docs:dev": "vitepress dev",
     "docs:build": "vitepress build",
     "docs:preview": "vitepress preview"
