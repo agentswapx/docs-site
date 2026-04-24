@@ -1,0 +1,33 @@
+# ATXSwap Documentation
+
+> Official documentation for **ATXSwap**, a decentralized agent exchange protocol on BNB Smart Chain (BSC). This site collects product walkthroughs, agent skill installation guides, and the developer reference for the [`atxswap-sdk`](https://www.npmjs.com/package/atxswap-sdk) TypeScript SDK and the `atxswap` agent skill on [ClawHub](https://clawhub.ai/skills/atxswap). If you are an AI agent helping a user trade ATX on BSC, this site has everything you need: install the skill, set up an SDK client, and start trading via the PancakeSwap V3 ATX/USDT pool. English content lives at the root; the same pages in Simplified Chinese live under `/zh/`.
+
+Live frontend: [www.atxswap.com](https://www.atxswap.com). Docs site source: [github.com/agentswapx/docs-site](https://github.com/agentswapx/docs-site).
+
+## Product guide
+
+- [Getting started (English)](https://docs.atxswap.com/guide/getting-started) — What ATXSwap is, key features, and how a typical user (or agent) trades ATX.
+- [快速开始（中文）](https://docs.atxswap.com/zh/guide/getting-started) — 同上的中文版。
+
+## Install the ATX agent skill
+
+- [Install via OpenClaw / ClawHub (English)](https://docs.atxswap.com/skill/install-openclaw) — `clawhub install atxswap --force` or `openclaw skills install atxswap`. Includes prerequisites, env vars, and security-scan notes.
+- [安装（OpenClaw / ClawHub，中文）](https://docs.atxswap.com/zh/skill/install-openclaw) — 中文版安装指南。
+- [Install into Claude Code / Codex CLI (English)](https://docs.atxswap.com/skill/install-agent) — `skills.sh`-compatible runtimes. The same `SKILL.md` works under both conventions.
+- [安装（Claude Code / Codex CLI，中文）](https://docs.atxswap.com/zh/skill/install-agent) — 中文版安装指南。
+
+## Developer reference
+
+- [Developer overview (English)](https://docs.atxswap.com/dev/overview) — High-level map of the SDK, contracts, and on-chain components.
+- [开发者概览（中文）](https://docs.atxswap.com/zh/dev/overview) — 中文版概览。
+- [SDK developer guide (English)](https://docs.atxswap.com/dev/sdk-guide) — Quick-start tutorial for `atxswap-sdk`: client config (including `rpcUrls` for the 8-endpoint BSC RPC fallback), wallet, query, swap, liquidity, and transfer modules.
+- [SDK 开发者指南（中文）](https://docs.atxswap.com/zh/dev/sdk-guide) — 中文版 SDK 教程。
+
+## External resources referenced from this site
+
+- [SDK package on npm](https://www.npmjs.com/package/atxswap-sdk) — `npm install atxswap-sdk`.
+- [SDK source on GitHub](https://github.com/agentswapx/atxswap-sdk) — TypeScript source, build setup, examples.
+- [Agent skill on ClawHub](https://clawhub.ai/skills/atxswap) — Published agent skill listing.
+- [Skill source on GitHub](https://github.com/agentswapx/skills/tree/main/atxswap) — `SKILL.md` and scripts.
+- [Frontend `llms.txt`](https://www.atxswap.com/llms.txt) — Higher-level project summary aimed at agents that land on the frontend first.
+- [llms.txt spec](https://llmstxt.org/) — The proposal this file follows.

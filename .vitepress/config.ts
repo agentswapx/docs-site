@@ -2,6 +2,58 @@ import { defineConfig, type DefaultTheme } from 'vitepress'
 
 const GITHUB_ORG = 'https://github.com/agentswapx'
 const REPO_EDIT_BASE = 'https://github.com/agentswapx/docs-site/edit/main'
+const SITE_HOSTNAME = 'https://docs.atxswap.com'
+const SITE_OG_IMAGE = `${SITE_HOSTNAME}/og.png`
+const SITE_DESCRIPTION =
+  'ATXSwap official documentation — product guides and developer docs for the decentralized agent exchange protocol on BNB Chain.'
+
+const jsonLd = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'Organization',
+    name: 'ATXSwap',
+    alternateName: 'Agent Token Exchange',
+    url: 'https://www.atxswap.com',
+    logo: `${SITE_HOSTNAME}/favicon.ico`,
+    sameAs: [
+      GITHUB_ORG,
+      'https://www.npmjs.com/package/atxswap-sdk',
+      'https://clawhub.ai/skills/atxswap',
+      'https://bscscan.com/token/0x82dbfD98AE6741C8506640CE235c6d95570EA638',
+    ],
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'WebSite',
+    name: 'ATXSwap Docs',
+    url: SITE_HOSTNAME,
+    description: SITE_DESCRIPTION,
+    inLanguage: ['en', 'zh-CN'],
+    potentialAction: {
+      '@type': 'SearchAction',
+      target: {
+        '@type': 'EntryPoint',
+        urlTemplate: `${SITE_HOSTNAME}/?q={search_term_string}`,
+      },
+      'query-input': 'required name=search_term_string',
+    },
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'TechArticle',
+    headline: 'ATXSwap documentation',
+    description: SITE_DESCRIPTION,
+    about: {
+      '@type': 'SoftwareApplication',
+      name: 'ATXSwap',
+      applicationCategory: 'FinanceApplication',
+      operatingSystem: 'Web, Linux, macOS',
+      url: 'https://www.atxswap.com',
+    },
+    inLanguage: ['en', 'zh-CN'],
+    publisher: { '@type': 'Organization', name: 'agentswapx' },
+  },
+]
 
 function nav(locale: 'en' | 'zh'): DefaultTheme.NavItem[] {
   if (locale === 'zh') {
@@ -93,7 +145,37 @@ export default defineConfig({
 
   appearance: 'dark',
 
-  head: [['link', { rel: 'icon', href: '/favicon.ico' }]],
+  sitemap: { hostname: SITE_HOSTNAME },
+
+  head: [
+    ['link', { rel: 'icon', href: '/favicon.ico' }],
+    ['meta', { name: 'author', content: 'agentswapx' }],
+    ['meta', { name: 'application-name', content: 'ATXSwap Docs' }],
+    [
+      'meta',
+      {
+        name: 'keywords',
+        content:
+          'ATX, ATXSwap, Agent Token Exchange, agent exchange, BNB Chain, BSC, PancakeSwap V3, DeFi, AI agent trading, atxswap-sdk, ClawHub, OpenClaw, documentation',
+      },
+    ],
+    ['meta', { property: 'og:type', content: 'website' }],
+    ['meta', { property: 'og:site_name', content: 'ATXSwap Docs' }],
+    ['meta', { property: 'og:title', content: 'ATXSwap Docs' }],
+    ['meta', { property: 'og:description', content: SITE_DESCRIPTION }],
+    ['meta', { property: 'og:url', content: SITE_HOSTNAME }],
+    ['meta', { property: 'og:image', content: SITE_OG_IMAGE }],
+    ['meta', { name: 'twitter:card', content: 'summary_large_image' }],
+    ['meta', { name: 'twitter:title', content: 'ATXSwap Docs' }],
+    ['meta', { name: 'twitter:description', content: SITE_DESCRIPTION }],
+    ['meta', { name: 'twitter:image', content: SITE_OG_IMAGE }],
+    ['meta', { name: 'robots', content: 'index,follow,max-image-preview:large,max-snippet:-1' }],
+    [
+      'script',
+      { type: 'application/ld+json' },
+      JSON.stringify(jsonLd),
+    ],
+  ],
 
   themeConfig: {
     socialLinks: [{ icon: 'github', link: GITHUB_ORG }],
