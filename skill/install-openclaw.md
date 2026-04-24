@@ -1,6 +1,6 @@
-# Install ATX Skill on ClawHub / OpenClaw
+# Install ATX Skill on OpenClaw
 
-The ATX skill (`atxswap`) is published to the ClawHub registry and works with both the standalone `clawhub` CLI and the OpenClaw CLI — they share the same registry. Once installed, your agent can autonomously perform on-chain operations: query prices, trade tokens, manage wallets, provide liquidity, and transfer assets.
+The ATX skill is published to the ClawHub skill library and can be installed with either the ClawHub CLI or the OpenClaw CLI. After installation, your agent can autonomously perform on-chain operations: create wallets, query prices, trade tokens, manage wallets, provide liquidity, and transfer assets.
 
 - **ClawHub**: [atxswap on clawhub.ai](https://clawhub.ai/skills/atxswap)
 - **SDK on npm**: [`atxswap-sdk`](https://www.npmjs.com/package/atxswap-sdk)
@@ -34,19 +34,7 @@ git clone https://github.com/agentswapx/skills.git
 cd skills/atxswap && npm install
 ```
 
-After install (any option), `npm install` inside the skill directory pulls [`atxswap-sdk`](https://www.npmjs.com/package/atxswap-sdk) from npm in around 15 seconds — no git clone or local build required.
-
-## ClawHub Listing
-
-| Field | Value |
-|---|---|
-| Skill slug | `atxswap` |
-| Latest version | `0.0.2` |
-| Author | `@agentswapx` |
-| License | `MIT-0` |
-| SDK dependency | [`atxswap-sdk@^0.0.1`](https://www.npmjs.com/package/atxswap-sdk) |
-| Requirements | Node.js 18+, npm, `BSC_RPC_URL` env (optional; supports comma-separated values; defaults to a built-in fallback list of 8 BSC public RPC endpoints) |
-| Supported OS | Linux, macOS |
+After install (any option), `npm install` inside the skill directory pulls [`atxswap-sdk`](https://www.npmjs.com/package/atxswap-sdk) from npm.
 
 Inspect the published skill metadata:
 
@@ -84,49 +72,58 @@ The agent will first fetch a quote preview and wait for your confirmation before
 
 > "Send 50 ATX to 0xABC...123"
 
-## Command Reference
+## Phrase quick reference
 
-These are the underlying commands the agent uses. You do not need to run them manually.
+The first column is example phrasing you can say to your agent (the prompt), the second column is the underlying command, and the third **Description** column summarizes what that command is for. You usually only need natural language; you do not need to run these commands by hand.
 
 ### Wallet Management
 
-| Command | Description |
-|---|---|
-| `wallet.js create [name] --password <pwd>` | Create a new wallet |
-| `wallet.js list` | List all wallets with balances |
-| `wallet.js import <key> [name] --password <pwd>` | Import an existing private key |
+| Phrase (prompt) | Command | Description |
+|---|---|---|
+| "Create a new wallet for me" | `wallet.js create [name] --password <pwd>` | Create a new wallet |
+| "List all my wallets" | `wallet.js list` | List all wallets and balances |
+| "Import this private key 0x… as cold-wallet" | `wallet.js import <key> [name] --password <pwd>` | Import an existing private key |
 
 ### Queries
 
-| Command | Description |
-|---|---|
-| `query.js price` | Query ATX/USDT price |
-| `query.js balance <address>` | Check balance |
-| `query.js quote <buy\|sell> <amount>` | Swap quote preview |
-| `query.js positions <address>` | View LP positions |
+| Phrase (prompt) | Command | Description |
+|---|---|---|
+| "What is the current ATX price?" | `query.js price` | Query ATX/USDT price |
+| "Check the balance of 0x…" | `query.js balance <address>` | Check balance (for a given address) |
+| "Quote how much ATX 10 USDT would buy" | `query.js quote <buy\|sell> <amount>` | Buy/sell quote preview |
+| "Show my LP positions" | `query.js positions <address>` | View LP positions |
 
 ### Swaps
 
-| Command | Description |
-|---|---|
-| `swap.js buy <usdtAmount>` | Buy ATX with USDT |
-| `swap.js sell <atxAmount>` | Sell ATX for USDT |
+| Phrase (prompt) | Command | Description |
+|---|---|---|
+| "Buy ATX with 10 USDT" | `swap.js buy <usdtAmount>` | Buy ATX with USDT |
+| "Sell 5 ATX for USDT" | `swap.js sell <atxAmount>` | Sell ATX for USDT |
 
 ### Liquidity
 
-| Command | Description |
-|---|---|
-| `liquidity.js add <atx> <usdt>` | Add liquidity |
-| `liquidity.js remove <tokenId> <percent>` | Remove liquidity |
-| `liquidity.js collect <tokenId>` | Collect fees |
+| Phrase (prompt) | Command | Description |
+|---|---|---|
+| "Add 100 ATX and 10 USDT of liquidity" | `liquidity.js add <atx> <usdt>` | Add liquidity |
+| "Remove 50% from position 123" | `liquidity.js remove <tokenId> <percent>` | Remove a percentage of liquidity |
+| "Collect fees for position 123" | `liquidity.js collect <tokenId>` | Collect accrued LP fees |
 
 ### Transfers
 
-| Command | Description |
-|---|---|
-| `transfer.js bnb <to> <amount>` | Send BNB |
-| `transfer.js atx <to> <amount>` | Send ATX |
-| `transfer.js usdt <to> <amount>` | Send USDT |
+| Phrase (prompt) | Command | Description |
+|---|---|---|
+| "Send 0.01 BNB to 0x…" | `transfer.js bnb <to> <amount>` | Send BNB |
+| "Send 50 ATX to 0x…" | `transfer.js atx <to> <amount>` | Send ATX |
+| "Send 100 USDT to 0x…" | `transfer.js usdt <to> <amount>` | Send USDT |
+
+::: info Note
+- The **phrases** in the first column are examples only. Similar or paraphrased wording usually works; the agent follows your intent, not the exact words.
+
+- The **commands** in the second column are script entry points inside the skill; the agent invokes them when needed. You typically do not run these in your terminal yourself.
+
+- The **description** text summarizes the behavior; like the example phrases, it is for your understanding and does not constrain how you must speak.
+
+:::
 
 ## Security
 

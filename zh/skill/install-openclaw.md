@@ -1,6 +1,6 @@
-# 在 ClawHub / OpenClaw 中安装 ATX 技能
+# 在 OpenClaw 中安装 ATX 技能
 
-ATX 技能（`atxswap`）已经发布到 ClawHub 注册表，独立的 `clawhub` CLI 和 OpenClaw CLI 共享同一个注册表，任选其一即可安装。装好后，你的智能体就能自动执行链上操作：查询价格、交易代币、管理钱包、提供流动性、转账。
+ATX 技能已经发布到 ClawHub 技能库，可以通过 ClawHub CLI 或者 OpenClaw CLI 安装。安装成功后，你的智能体就能自动执行链上操作：创建钱包、查询价格、交易代币、管理钱包、提供流动性、转账。
 
 - **ClawHub**: [atxswap @ clawhub.ai](https://clawhub.ai/skills/atxswap)
 - **SDK (npm)**: [`atxswap-sdk`](https://www.npmjs.com/package/atxswap-sdk)
@@ -34,19 +34,7 @@ git clone https://github.com/agentswapx/skills.git
 cd skills/atxswap && npm install
 ```
 
-不论用哪种方式安装，进入 skill 目录跑 `npm install` 都会从 npm 拉 [`atxswap-sdk`](https://www.npmjs.com/package/atxswap-sdk)，大约 15 秒完成，不再需要 git clone 或本地构建。
-
-## ClawHub 发布信息
-
-| 字段 | 值 |
-|---|---|
-| 技能 slug | `atxswap` |
-| 最新版本 | `0.0.2` |
-| 作者 | `@agentswapx` |
-| 协议 | `MIT-0` |
-| SDK 依赖 | [`atxswap-sdk@^0.0.1`](https://www.npmjs.com/package/atxswap-sdk) |
-| 运行要求 | Node.js 18+、npm，可选环境变量 `BSC_RPC_URL`（支持逗号分隔多地址；未设置时使用内置的 8 个 BSC 公共 RPC 端点自动回退） |
-| 支持系统 | Linux、macOS |
+不论用哪种方式安装，进入 skill 目录跑 `npm install` 都会从 npm 拉 [`atxswap-sdk`](https://www.npmjs.com/package/atxswap-sdk)。
 
 查看已发布技能的元数据：
 
@@ -84,49 +72,58 @@ openclaw skills info atxswap
 
 > "把 50 ATX 转给 0xABC...123"
 
-## 命令速查
+## 口令速查
 
-以下是智能体使用的底层命令，你不需要手动执行。
+下表第一列为你可以对智能体说的例句（口令），第二列为智能体在底层会调用的命令，第三列**说明**各命令的用途。你一般只需用自然语言提需求，不必手动执行命令。
 
 ### 钱包管理
 
-| 命令 | 说明 |
-|---|---|
-| `wallet.js create [name] --password <pwd>` | 创建新钱包 |
-| `wallet.js list` | 列出所有钱包及余额 |
-| `wallet.js import <key> [name] --password <pwd>` | 导入已有私钥 |
+| 口令 | 命令 | 说明 |
+|---|---|---|
+| 「帮我创建一个新钱包」 | `wallet.js create [name] --password <pwd>` | 创建新钱包 |
+| 「列出我所有的钱包」 | `wallet.js list` | 列出所有钱包及余额 |
+| 「把私钥 0x… 导入为『冷钱包』」 | `wallet.js import <key> [name] --password <pwd>` | 导入已有私钥 |
 
 ### 查询
 
-| 命令 | 说明 |
-|---|---|
-| `query.js price` | 查询 ATX/USDT 价格 |
-| `query.js balance <address>` | 查询余额 |
-| `query.js quote <buy\|sell> <amount>` | 交换报价预览 |
-| `query.js positions <address>` | 查看 LP 仓位 |
+| 口令 | 命令 | 说明 |
+|---|---|---|
+| 「查一下 ATX 现在多少钱」 | `query.js price` | 查询 ATX/USDT 价格 |
+| 「这个地址 0x… 的余额多少」 | `query.js balance <address>` | 查询（指定地址）余额 |
+| 「用 10 USDT 买入能换多少 ATX」 | `query.js quote <buy\|sell> <amount>` | 买卖报价预览 |
+| 「我有哪些流动性仓位」 | `query.js positions <address>` | 查看 LP 仓位 |
 
 ### 交换
 
-| 命令 | 说明 |
-|---|---|
-| `swap.js buy <usdtAmount>` | 用 USDT 买入 ATX |
-| `swap.js sell <atxAmount>` | 卖出 ATX 换 USDT |
+| 口令 | 命令 | 说明 |
+|---|---|---|
+| 「用 10 USDT 买 ATX」 | `swap.js buy <usdtAmount>` | 用 USDT 买入 ATX |
+| 「卖 5 ATX 换 USDT」 | `swap.js sell <atxAmount>` | 卖出 ATX 换 USDT |
 
 ### 流动性
 
-| 命令 | 说明 |
-|---|---|
-| `liquidity.js add <atx> <usdt>` | 添加流动性 |
-| `liquidity.js remove <tokenId> <percent>` | 移除流动性 |
-| `liquidity.js collect <tokenId>` | 收取手续费 |
+| 口令 | 命令 | 说明 |
+|---|---|---|
+| 「加 100 ATX 和 10 USDT 的流动性」 | `liquidity.js add <atx> <usdt>` | 添加流动性 |
+| 「把 123 号仓位撤掉 50%」 | `liquidity.js remove <tokenId> <percent>` | 按百分比移除流动性 |
+| 「收取 123 号仓位的费」 | `liquidity.js collect <tokenId>` | 收取 LP 累计手续费 |
 
 ### 转账
 
-| 命令 | 说明 |
-|---|---|
-| `transfer.js bnb <to> <amount>` | 发送 BNB |
-| `transfer.js atx <to> <amount>` | 发送 ATX |
-| `transfer.js usdt <to> <amount>` | 发送 USDT |
+| 口令 | 命令 | 说明 |
+|---|---|---|
+| 「转 0.01 BNB 给 0x…」 | `transfer.js bnb <to> <amount>` | 发送 BNB |
+| 「转 50 ATX 给 0x…」 | `transfer.js atx <to> <amount>` | 发送 ATX |
+| 「转 100 USDT 给 0x…」 | `transfer.js usdt <to> <amount>` | 发送 USDT |
+
+::: info 备注
+- 上表**口令**仅为示例，用相近说法、换种说法通常也可以，以你的意图为主，不必照抄原句。
+
+- 上表**命令**是技能包内的脚本文本，由智能体在需要时调起；你一般不必自己在终端里执行。
+
+- 上表**说明**概括该行为或底层命令的大致作用，与口令一样可做理解用，不限制你必须怎么说。
+
+:::
 
 ## 安全说明
 
