@@ -1,6 +1,6 @@
 # 在 OpenClaw 中安装 ATX 技能
 
-ATX 技能（`atxswap`）已经发布到 ClawHub 技能库，可以通过 ClawHub CLI 或者 OpenClaw CLI 安装。安装成功后，你的智能体就能自动执行链上操作：创建钱包、查询价格、交易代币、管理钱包、提供流动性、转账。
+ATX 技能（`atxswap`）已经发布到 ClawHub 技能库，可以通过 **OpenClaw CLI** 或 **ClawHub CLI** 安装。安装成功后，你的智能体就能自动执行链上操作：创建钱包、查询价格、交易代币、管理钱包、提供流动性、转账。
 
 - **SDK (npm)**: [`atxswap-sdk`](https://www.npmjs.com/package/atxswap-sdk)
 - **GitHub**: [agentswapx/skills](https://github.com/agentswapx/skills/tree/main/atxswap)
@@ -8,7 +8,15 @@ ATX 技能（`atxswap`）已经发布到 ClawHub 技能库，可以通过 ClawHu
 
 ## 安装方式
 
-### 方式一：ClawHub CLI
+### 方式一：OpenClaw CLI
+
+```bash
+openclaw skills install atxswap
+```
+
+OpenClaw 与 ClawHub 共享注册表，安装目录是 `~/.openclaw/workspace/skills/atxswap/`。
+
+### 方式二：ClawHub CLI
 
 ```bash
 npm install -g clawhub
@@ -18,14 +26,6 @@ clawhub install atxswap --force
 ::: tip
 `--force` 是必需的：ClawHub 的 VirusTotal 扫描器会把任何涉及钱包/keystore 的 SDK 默认标为 "suspicious"。加密工具天生会触发这一规则，不是真正的告警。
 :::
-
-### 方式二：OpenClaw CLI
-
-```bash
-openclaw skills install atxswap
-```
-
-OpenClaw 与 ClawHub 共享注册表，安装目录是 `~/.openclaw/workspace/skills/atxswap/`。
 
 ### 方式三：手动安装
 
