@@ -82,6 +82,7 @@ openclaw skills info atxswap
 |---|---|---|
 | 「帮我创建一个新钱包」 | `wallet.js create [name] --password <pwd>` | 创建新钱包 |
 | 「列出我所有的钱包」 | `wallet.js list` | 列出所有钱包及余额 |
+| 「把 0x… 的 keystore 导出来备份」 | `wallet.js export <address> [--out <file>]` | 导出钱包对应的**加密 keystore JSON**（不会暴露原始私钥） |
 
 ### 查询
 
@@ -133,3 +134,4 @@ openclaw skills info atxswap
 - 大额交易需要你明确说"确认"或"执行"
 - 私钥以加密形式存储在本地 keystore 文件中
 - 密码保存在系统安全存储中（macOS Keychain / Linux Secret Service）
+- 备份钱包时，技能只能产出**加密后的 keystore JSON**（例如 `wallet.js export <address> --out wallet.json`），技能与底层 SDK 都不会输出原始私钥

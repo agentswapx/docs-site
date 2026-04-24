@@ -275,7 +275,7 @@ Once your first example is working, these are usually the next APIs worth learni
 
 | Module | Methods you will likely use first |
 |---|---|
-| `wallet` | `create()`, `list()`, `load()`, `hasSavedPassword()` |
+| `wallet` | `create()`, `list()`, `load()`, `hasSavedPassword()`, `exportKeystore()` (returns the encrypted keystore JSON; raw private-key import/export is intentionally not exposed) |
 | `query` | `getPrice()`, `getBalance()`, `getQuote()`, `getPositions()` |
 | `swap` | `buy()`, `sell()`, `preview()` |
 | `liquidity` | `addLiquidity()`, `removeLiquidity()`, `collectFees()` |

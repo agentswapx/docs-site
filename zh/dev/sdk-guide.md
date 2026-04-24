@@ -275,7 +275,7 @@ main().catch(console.error);
 
 | 模块 | 你最先会用到的方法 |
 |---|---|
-| `wallet` | `create()`, `list()`, `load()`, `hasSavedPassword()` |
+| `wallet` | `create()`, `list()`, `load()`, `hasSavedPassword()`, `exportKeystore()`（返回加密的 keystore JSON；SDK 故意不提供导入或导出原始私钥的方法） |
 | `query` | `getPrice()`, `getBalance()`, `getQuote()`, `getPositions()` |
 | `swap` | `buy()`, `sell()`, `preview()` |
 | `liquidity` | `addLiquidity()`, `removeLiquidity()`, `collectFees()` |

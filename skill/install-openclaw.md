@@ -82,6 +82,7 @@ The first column is example phrasing you can say to your agent (the prompt), the
 |---|---|---|
 | "Create a new wallet for me" | `wallet.js create [name] --password <pwd>` | Create a new wallet |
 | "List all my wallets" | `wallet.js list` | List all wallets and balances |
+| "Export the keystore for 0x… so I can back it up" | `wallet.js export <address> [--out <file>]` | Export the wallet's **encrypted keystore JSON** (the raw private key is never exposed) |
 
 ### Queries
 
@@ -133,3 +134,4 @@ The first column is example phrasing you can say to your agent (the prompt), the
 - Large trades require you to explicitly say "confirm" or "execute"
 - Private keys are stored encrypted in local keystore files
 - Passwords are saved in your system's secure storage (macOS Keychain / Linux Secret Service)
+- For backups the skill can only emit the **encrypted keystore JSON** (e.g. `wallet.js export <address> --out wallet.json`); raw private keys are never produced by the skill or the underlying SDK

@@ -89,6 +89,7 @@ The first column is example phrasing for **Claude Code** (the prompt), the secon
 |---|---|---|
 | "Create a new wallet for me" | `wallet.js create [name] --password <pwd>` | Create a new wallet |
 | "List all my wallets" | `wallet.js list` | List all wallets and balances |
+| "Export the keystore for 0x… so I can back it up" | `wallet.js export <address> [--out <file>]` | Export the wallet's **encrypted keystore JSON** (the raw private key is never exposed) |
 
 ### Queries
 
@@ -139,3 +140,4 @@ The first column is example phrasing for **Claude Code** (the prompt), the secon
 - Before trading, the skill surfaces quotes, balances, or other previews, and waits for your confirmation  
 - High‑impact writes expect explicit "confirm" / "execute" language  
 - Private keys are stored encrypted in local keystore files; passwords can use the OS keychain (e.g. macOS Keychain / Linux Secret Service)  
+- For backups the skill only produces the **encrypted keystore JSON** (e.g. `wallet.js export <address> --out wallet.json`); raw private keys are never produced by the skill or the underlying SDK  
