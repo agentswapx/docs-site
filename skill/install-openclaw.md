@@ -82,7 +82,6 @@ The first column is example phrasing you can say to your agent (the prompt), the
 |---|---|---|
 | "Create a new wallet for me" | `wallet.js create [name] --password <pwd>` | Create a new wallet |
 | "List all my wallets" | `wallet.js list` | List all wallets and balances |
-| "Import this private key 0x… as cold-wallet" | `wallet.js import <key> [name] --password <pwd>` | Import an existing private key |
 
 ### Queries
 
@@ -122,6 +121,8 @@ The first column is example phrasing you can say to your agent (the prompt), the
 - The **commands** in the second column are script entry points inside the skill; the agent invokes them when needed. You typically do not run these in your terminal yourself.
 
 - The **description** text summarizes the behavior; like the example phrases, it is for your understanding and does not constrain how you must speak.
+
+- Importing a private key via natural-language chat is **not** supported. If you need to import, do it from a terminal in the skill directory (e.g. `wallet.js import`) and follow good security practice.
 
 :::
 

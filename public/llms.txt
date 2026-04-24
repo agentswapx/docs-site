@@ -13,8 +13,8 @@ Live frontend: [www.atxswap.com](https://www.atxswap.com). Docs site source: [gi
 
 - [Install via OpenClaw / ClawHub (English)](https://docs.atxswap.com/skill/install-openclaw) — `clawhub install atxswap --force` or `openclaw skills install atxswap`. Includes prerequisites, env vars, and security-scan notes.
 - [安装（OpenClaw / ClawHub，中文）](https://docs.atxswap.com/zh/skill/install-openclaw) — 中文版安装指南。
-- [Install into Claude Code / Codex CLI (English)](https://docs.atxswap.com/skill/install-agent) — `skills.sh`-compatible runtimes. The same `SKILL.md` works under both conventions.
-- [安装（Claude Code / Codex CLI，中文）](https://docs.atxswap.com/zh/skill/install-agent) — 中文版安装指南。
+- [Install the ATX Skill in Claude Code (English)](https://docs.atxswap.com/skill/install-agent) — clone `agentswapx/skills`, `npm install` in `atxswap/`, open the workspace in Claude Code.
+- [在 Claude Code 中安装 ATX 技能（中文）](https://docs.atxswap.com/zh/skill/install-agent) — 中文版说明。
 
 ## Developer reference
 

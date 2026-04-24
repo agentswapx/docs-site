@@ -1,27 +1,27 @@
-# Install ATX Skill for Your AI
+# Install the ATX Skill in Claude Code
 
-Once the ATX skill is installed, you can use natural language to have Claude, Cursor, Codex, or any compatible AI tool operate BSC on-chain assets for you: check prices, trade tokens, manage wallets, provide liquidity, and transfer tokens — no coding required.
+This page explains how to use **Claude Code** with the ATX skill (`atxswap`) to work with BSC on-chain assets: create wallets, check prices, trade, manage liquidity, and transfer — all in natural language, without hand-writing DApp code. The skill follows the [Agent Skills](https://github.com/anthropics/skills) convention via `SKILL.md`. For **OpenClaw** and other ClawHub-based installs, see [Install ATX Skill on OpenClaw](/skill/install-openclaw).
 
-- **GitHub**: [agentswapx/skills](https://github.com/agentswapx/skills)
-- **Supported AI tools**: Claude Desktop, Cursor IDE, Codex CLI, and any tool compatible with the Agent Skills specification
+- **SDK on npm**: [`atxswap-sdk`](https://www.npmjs.com/package/atxswap-sdk)
+- **GitHub**: [agentswapx/skills](https://github.com/agentswapx/skills/tree/main/atxswap)
 
 ## Prerequisites
 
-You need the following software installed on your computer:
+On your machine:
 
 - **Node.js 18+** ([download](https://nodejs.org))
-- **npm** (comes with Node.js)
+- **npm** (bundled with Node.js)
 - **Git** ([download](https://git-scm.com))
 
-Verify your installation:
+Check versions:
 
 ```bash
 node -v && npm -v && git --version
 ```
 
-## 30-Second Install
+## Get the skill and install dependencies
 
-Just two commands:
+Run the following in a location you will open with Claude Code (the workspace must **contain** the `atxswap` folder; you can nest the `skills` repo under a larger project if you prefer):
 
 ```bash
 git clone https://github.com/agentswapx/skills.git
@@ -31,65 +31,45 @@ git clone https://github.com/agentswapx/skills.git
 cd skills/atxswap && npm install
 ```
 
-Done. `npm install` automatically pulls the ATX SDK — no manual compilation needed.
+`npm install` pulls the ATX SDK — no separate build step. If you already have a project tree, you can place `skills` under it and run `cd …/atxswap && npm install` from there.
 
-### Set a Custom RPC Node (Optional)
+### Custom RPC (optional)
 
-The default public RPC node works out of the box. If you have a dedicated node:
+By default the skill uses a built-in fallback of BSC public RPC endpoints. For a private or preferred node, set (comma‑separated, left‑to‑right priority):
 
 ```bash
-export BSC_RPC_URL="https://your-rpc-node.com"
+export BSC_RPC_URL="https://your-rpc.example.com,https://bsc-rpc.publicnode.com"
 ```
 
-## Tell Your AI Tool
+## Use it in Claude Code
 
-After installing the skill, you need to point your AI tool to it.
+1. Open the workspace in **Claude Code** that contains this skill — for example the `skills` repo root after cloning, or a parent project root that includes the `atxswap` directory.  
+2. The skill root is `atxswap/`; the entry you care about is **`SKILL.md`**. Keep that path inside the workspace and ensure `npm install` has been run in `atxswap/`.  
+3. Describe what you need in natural language. Claude Code follows `SKILL.md` to invoke scripts under `scripts/` with the documented safety rules.  
 
-### Claude Desktop
-
-Add the skill directory path in Claude Desktop settings:
-
-```text
-skills/atxswap/SKILL.md
-```
-
-Claude will automatically read SKILL.md and learn all ATX operation commands.
-
-### Cursor IDE
-
-In Cursor, add the skill directory to your project's `.cursor/skills/` folder, or specify the path in settings:
-
-```text
-skills/atxswap/SKILL.md
-```
-
-### Codex CLI
-
-Codex automatically scans for SKILL.md files in your project. Just make sure the skills directory is inside your workspace.
+You do not need to type `wallet.js`, `query.js`, and so on in a terminal for normal use — only if you are debugging the skill yourself.
 
 ## Try It Out
 
-Once installed, just talk to your AI in natural language:
+After setup, you can try prompts like:
 
-### Check Price
+### Check price
 
 > "What is the current ATX price?"
 
-The AI will run `query.js price` and return the live ATX/USDT price.
-
-### Create a Wallet
+### Create a wallet
 
 > "Create a new wallet for me"
 
-The AI will ask you to set a password, then create an encrypted wallet. The password is auto-saved to your system's secure storage — no need to enter it again.
+Claude will walk you through a password; it can be stored in the OS secure storage for later sessions where appropriate.
 
-### Buy Tokens
+### Buy tokens
 
 > "Buy ATX with 10 USDT"
 
-The AI will first fetch a quote showing how much ATX you'll receive, then wait for your confirmation before executing.
+You should see a quote or preview first, then execution on-chain after you confirm.
 
-### Check Balance
+### Check balance
 
 > "Show my wallet balance"
 
@@ -97,56 +77,65 @@ The AI will first fetch a quote showing how much ATX you'll receive, then wait f
 
 > "Send 50 ATX to 0xABC...123"
 
-For any action involving asset changes, the AI will always show a preview first and wait for you to say "confirm" before executing.
+Value-moving actions show a preview first; explicit confirmation is required before execution.
 
-## Command Reference
+## Phrase quick reference
 
-These are the underlying commands the AI uses. You do not need to run them manually — they are listed here for reference only.
+The first column is example phrasing for **Claude Code** (the prompt), the second column is the underlying command, and the third **Description** column summarizes what that command is for. You usually only need natural language; you do not need to run these commands by hand.
 
-### Wallet Management
+### Wallet management
 
-| Command | Description |
-|---|---|
-| `wallet.js create [name] --password <pwd>` | Create a new wallet |
-| `wallet.js list` | List all wallets with balances |
-| `wallet.js import <key> [name] --password <pwd>` | Import an existing private key |
+| Phrase (prompt) | Command | Description |
+|---|---|---|
+| "Create a new wallet for me" | `wallet.js create [name] --password <pwd>` | Create a new wallet |
+| "List all my wallets" | `wallet.js list` | List all wallets and balances |
 
 ### Queries
 
-| Command | Description |
-|---|---|
-| `query.js price` | Query ATX/USDT price |
-| `query.js balance <address>` | Check balance |
-| `query.js quote <buy\|sell> <amount>` | Swap quote preview |
-| `query.js positions <address>` | View LP positions |
+| Phrase (prompt) | Command | Description |
+|---|---|---|
+| "What is the current ATX price?" | `query.js price` | Query ATX/USDT price |
+| "Check the balance of 0x…" | `query.js balance <address>` | Check balance (for a given address) |
+| "Quote how much ATX 10 USDT would buy" | `query.js quote <buy\|sell> <amount>` | Buy/sell quote preview |
+| "Show my LP positions" | `query.js positions <address>` | View LP positions |
 
 ### Swaps
 
-| Command | Description |
-|---|---|
-| `swap.js buy <usdtAmount>` | Buy ATX with USDT |
-| `swap.js sell <atxAmount>` | Sell ATX for USDT |
+| Phrase (prompt) | Command | Description |
+|---|---|---|
+| "Buy ATX with 10 USDT" | `swap.js buy <usdtAmount>` | Buy ATX with USDT |
+| "Sell 5 ATX for USDT" | `swap.js sell <atxAmount>` | Sell ATX for USDT |
 
 ### Liquidity
 
-| Command | Description |
-|---|---|
-| `liquidity.js add <atx> <usdt>` | Add liquidity |
-| `liquidity.js remove <tokenId> <percent>` | Remove liquidity |
-| `liquidity.js collect <tokenId>` | Collect fees |
+| Phrase (prompt) | Command | Description |
+|---|---|---|
+| "Add 100 ATX and 10 USDT of liquidity" | `liquidity.js add <atx> <usdt>` | Add liquidity |
+| "Remove 50% from position 123" | `liquidity.js remove <tokenId> <percent>` | Remove a percentage of liquidity |
+| "Collect fees for position 123" | `liquidity.js collect <tokenId>` | Collect accrued LP fees |
 
 ### Transfers
 
-| Command | Description |
-|---|---|
-| `transfer.js bnb <to> <amount>` | Send BNB |
-| `transfer.js atx <to> <amount>` | Send ATX |
-| `transfer.js usdt <to> <amount>` | Send USDT |
+| Phrase (prompt) | Command | Description |
+|---|---|---|
+| "Send 0.01 BNB to 0x…" | `transfer.js bnb <to> <amount>` | Send BNB |
+| "Send 50 ATX to 0x…" | `transfer.js atx <to> <amount>` | Send ATX |
+| "Send 100 USDT to 0x…" | `transfer.js usdt <to> <amount>` | Send USDT |
+
+::: info Note
+- The **phrases** in the first column are examples only. Similar or paraphrased wording usually works; the agent follows your intent, not the exact words.
+
+- The **commands** in the second column are script entry points inside the skill; **Claude Code** invokes them when needed. You typically do not run these in your terminal yourself.
+
+- The **description** text summarizes the behavior; like the example phrases, it is for your understanding and does not constrain how you must speak.
+
+- Importing a private key via natural-language chat is **not** supported. If you need to import, do it from a terminal in the skill directory (e.g. `wallet.js import`) and follow good security practice.
+
+:::
 
 ## Security
 
-- The AI will never display your private keys or passwords in chat
-- Before any transaction, the AI shows a quote/balance preview and waits for your confirmation
-- Large trades require you to explicitly say "confirm" or "execute"
-- Private keys are stored encrypted in local keystore files
-- Passwords are saved in your system's secure storage (macOS Keychain / Linux Secret Service)
+- Private keys and passwords are not shown unnecessarily in chat  
+- Before trading, the skill surfaces quotes, balances, or other previews, and waits for your confirmation  
+- High‑impact writes expect explicit "confirm" / "execute" language  
+- Private keys are stored encrypted in local keystore files; passwords can use the OS keychain (e.g. macOS Keychain / Linux Secret Service)  

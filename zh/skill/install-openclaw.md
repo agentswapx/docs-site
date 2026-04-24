@@ -82,7 +82,6 @@ openclaw skills info atxswap
 |---|---|---|
 | 「帮我创建一个新钱包」 | `wallet.js create [name] --password <pwd>` | 创建新钱包 |
 | 「列出我所有的钱包」 | `wallet.js list` | 列出所有钱包及余额 |
-| 「把私钥 0x… 导入为『冷钱包』」 | `wallet.js import <key> [name] --password <pwd>` | 导入已有私钥 |
 
 ### 查询
 
@@ -122,6 +121,8 @@ openclaw skills info atxswap
 - 上表**命令**是技能包内的脚本文本，由智能体在需要时调起；你一般不必自己在终端里执行。
 
 - 上表**说明**概括该行为或底层命令的大致作用，与口令一样可做理解用，不限制你必须怎么说。
+
+- 不支持在对话中通过口令导入私钥；如确需导入，请自行在技能目录下以终端命令等方式操作（例如 `wallet.js import`），并注意安全。
 
 :::
 

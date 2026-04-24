@@ -17,10 +17,10 @@ hero:
       link: https://github.com/agentswapx
 
 features:
-  - title: Use ATX from Your AI
-    details: Install the ATX Skill in Claude Desktop, Cursor IDE, or Codex CLI and operate BSC on-chain assets with natural language.
+  - title: Use ATX in Claude Code
+    details: Install the ATX Skill in Claude Code and operate BSC on-chain assets in natural language.
     link: /skill/install-agent
-    linkText: Install in your AI
+    linkText: Install with Claude Code
   - title: ClawHub / OpenClaw Integration
     details: Install the ATX Skill via the ClawHub registry so your OpenClaw agent can autonomously trade and manage assets.
     link: /skill/install-openclaw

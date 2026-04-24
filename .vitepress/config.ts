@@ -88,7 +88,7 @@ function sidebar(locale: 'en' | 'zh'): DefaultTheme.Sidebar {
           collapsed: false,
           items: [
             { text: 'OpenClaw', link: '/zh/skill/install-openclaw' },
-            { text: 'Codex', link: '/zh/skill/install-agent' },
+            { text: 'Claude Code', link: '/zh/skill/install-agent' },
           ],
         },
       ],
@@ -118,7 +118,7 @@ function sidebar(locale: 'en' | 'zh'): DefaultTheme.Sidebar {
         collapsed: false,
         items: [
           { text: 'OpenClaw', link: '/skill/install-openclaw' },
-          { text: 'Codex', link: '/skill/install-agent' },
+          { text: 'Claude Code', link: '/skill/install-agent' },
         ],
       },
     ],
