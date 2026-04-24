@@ -45,7 +45,7 @@ After install (any option), `npm install` inside the skill directory pulls [`atx
 | Author | `@agentswapx` |
 | License | `MIT-0` |
 | SDK dependency | [`atxswap-sdk@^0.0.1`](https://www.npmjs.com/package/atxswap-sdk) |
-| Requirements | Node.js 18+, npm, `BSC_RPC_URL` env (optional, defaults to public BSC RPC) |
+| Requirements | Node.js 18+, npm, `BSC_RPC_URL` env (optional; supports comma-separated values; defaults to a built-in fallback list of 8 BSC RPC endpoints — Infura + 7 BNB Chain public nodes) |
 | Supported OS | Linux, macOS |
 
 Inspect the published skill metadata:

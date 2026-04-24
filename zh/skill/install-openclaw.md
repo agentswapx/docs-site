@@ -45,7 +45,7 @@ cd skills/atxswap && npm install
 | 作者 | `@agentswapx` |
 | 协议 | `MIT-0` |
 | SDK 依赖 | [`atxswap-sdk@^0.0.1`](https://www.npmjs.com/package/atxswap-sdk) |
-| 运行要求 | Node.js 18+、npm，可选环境变量 `BSC_RPC_URL`（默认公共 BSC RPC） |
+| 运行要求 | Node.js 18+、npm，可选环境变量 `BSC_RPC_URL`（支持逗号分隔多地址；未设置时使用内置的 8 个 BSC RPC 端点 — Infura + 7 个 BNB Chain 公共节点 — 自动回退） |
 | 支持系统 | Linux、macOS |
 
 查看已发布技能的元数据：

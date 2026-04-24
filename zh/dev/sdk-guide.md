@@ -55,7 +55,7 @@ main().catch((error) => {
 | 运行时 | Node.js 18+ |
 | 网络 | BSC 主网，chainId `56` |
 | Gas | 所有写操作都需要 BNB 支付 gas |
-| RPC | 未配置时会使用默认公共 BSC RPC，生产环境建议显式提供 `BSC_RPC_URL` |
+| RPC | 未配置时 SDK 会回落到内置的 8 个 BSC RPC 端点（Infura + 7 个 BNB Chain 公共节点）。生产环境建议显式设置 `BSC_RPC_URL`，可填单个地址，也可用逗号分隔多个地址（例如 `"https://primary,https://backup"`），技能层会解析为 `rpcUrls` 传给 SDK |
 | 默认手续费档位 | `2500`，即 `0.25%` |
 | 默认滑点 | `300` bps，即 `3%` |
 
