@@ -122,7 +122,7 @@ The first column is example phrasing you can say to your agent (the prompt), the
 
 - The **description** text summarizes the behavior; like the example phrases, it is for your understanding and does not constrain how you must speak.
 
-- Importing a private key via natural-language chat is **not** supported. If you need to import, do it from a terminal in the skill directory (e.g. `wallet.js import`) and follow good security practice.
+- Importing an existing private key is **not supported** — neither through natural-language prompts nor as a CLI subcommand. The skill only **creates** a fresh wallet for this skill instance. If you need to use an existing private key, manage it with your preferred wallet tooling instead.
 
 :::
 
