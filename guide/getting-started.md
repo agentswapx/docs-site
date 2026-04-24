@@ -4,7 +4,7 @@ Welcome to ATXSwap. This guide walks you through the core features and how to st
 
 ## What is ATXSwap
 
-ATXSwap is a decentralized token exchange protocol deployed on BNB Smart Chain (BSC), optimized for agent-driven scenarios.
+ATXSwap is a decentralized agent exchange protocol deployed on BNB Smart Chain (BSC), optimized for agent-driven scenarios.
 
 ## Key Features
 

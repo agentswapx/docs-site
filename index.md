@@ -3,7 +3,7 @@ layout: home
 
 hero:
   name: ATXSwap
-  text: Decentralized token exchange on BNB Chain
+  text: Decentralized agent exchange protocol on BNB Chain
   tagline: Agent Token Exchange — product guides and developer documentation
   actions:
     - theme: brand

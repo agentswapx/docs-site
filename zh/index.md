@@ -3,7 +3,7 @@ layout: home
 
 hero:
   name: ATXSwap
-  text: 基于 BNB Chain 的去中心化代币交易协议
+  text: 基于 BNB Chain 的智能体去中心化交易协议
   tagline: 面向 Agent 的 Token Exchange，提供产品说明与开发者文档
   actions:
     - theme: brand
