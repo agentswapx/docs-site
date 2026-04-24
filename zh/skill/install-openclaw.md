@@ -1,6 +1,6 @@
 # 在 OpenClaw 中安装 ATX 技能
 
-ATX 技能已经发布到 ClawHub 技能库，可以通过 ClawHub CLI 或者 OpenClaw CLI 安装。安装成功后，你的智能体就能自动执行链上操作：创建钱包、查询价格、交易代币、管理钱包、提供流动性、转账。
+ATX 技能（`atxswap`）已经发布到 ClawHub 技能库，可以通过 ClawHub CLI 或者 OpenClaw CLI 安装。安装成功后，你的智能体就能自动执行链上操作：创建钱包、查询价格、交易代币、管理钱包、提供流动性、转账。
 
 - **SDK (npm)**: [`atxswap-sdk`](https://www.npmjs.com/package/atxswap-sdk)
 - **GitHub**: [agentswapx/skills](https://github.com/agentswapx/skills/tree/main/atxswap)

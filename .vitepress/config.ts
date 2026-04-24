@@ -84,7 +84,7 @@ function sidebar(locale: 'en' | 'zh'): DefaultTheme.Sidebar {
       ],
       '/zh/skill/': [
         {
-          text: '安装 ATX 技能',
+          text: '安装技能',
           collapsed: false,
           items: [
             { text: 'OpenClaw', link: '/zh/skill/install-openclaw' },
@@ -114,7 +114,7 @@ function sidebar(locale: 'en' | 'zh'): DefaultTheme.Sidebar {
     ],
     '/skill/': [
       {
-        text: 'Install ATX Skill',
+        text: 'Install Skill',
         collapsed: false,
         items: [
           { text: 'OpenClaw', link: '/skill/install-openclaw' },

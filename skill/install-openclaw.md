@@ -1,6 +1,6 @@
 # Install ATX Skill on OpenClaw
 
-The ATX skill is published to the ClawHub skill library and can be installed with either the ClawHub CLI or the OpenClaw CLI. After installation, your agent can autonomously perform on-chain operations: create wallets, query prices, trade tokens, manage wallets, provide liquidity, and transfer assets.
+The ATX skill (`atxswap`) is published to the ClawHub skill library and can be installed with either the ClawHub CLI or the OpenClaw CLI. After installation, your agent can autonomously perform on-chain operations: create wallets, query prices, trade tokens, manage wallets, provide liquidity, and transfer assets.
 
 - **SDK on npm**: [`atxswap-sdk`](https://www.npmjs.com/package/atxswap-sdk)
 - **GitHub**: [agentswapx/skills](https://github.com/agentswapx/skills/tree/main/atxswap)
