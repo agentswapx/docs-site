@@ -55,7 +55,7 @@ Confirm these prerequisites before you move on:
 | Runtime | Node.js 18+ |
 | Network | BSC mainnet, chainId `56` |
 | Gas | All write actions need BNB for gas |
-| RPC | When unset, the SDK falls back to a built-in list of 8 BSC RPC endpoints (Infura + 7 BNB Chain public nodes). For production, prefer setting `BSC_RPC_URL` to your own primary endpoint, optionally as a comma-separated list (e.g. `"https://primary,https://backup"`) which is parsed as `rpcUrls` |
+| RPC | When unset, the SDK falls back to a built-in list of 8 BSC public RPC endpoints. For production, prefer setting `BSC_RPC_URL` to your own primary endpoint, optionally as a comma-separated list (e.g. `"https://primary,https://backup"`) which is parsed as `rpcUrls` |
 | Default fee tier | `2500`, which is `0.25%` |
 | Default slippage | `300` bps, which is `3%` |
 
