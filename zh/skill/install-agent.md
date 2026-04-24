@@ -19,19 +19,57 @@
 node -v && npm -v && git --version
 ```
 
+## 选择安装位置
+
+Claude Code 会从两个固定目录加载技能，按需要选其一即可：
+
+| 类型 | 路径 | 适用场景 |
+|---|---|---|
+| ① 个人技能（全局） | `~/.claude/skills/atxswap/SKILL.md` | 当前用户在**任何项目**中都可以调用 |
+| ② 项目技能（当前项目） | `<项目根>/.claude/skills/atxswap/SKILL.md` | 只在当前项目可用，可随项目仓库一同提交版本控制 |
+
+::: tip 建议
+项目协作场景把 `.claude/skills/` 一起提交到版本控制，技能就成了项目工具的一部分；个人场景放在 `~/.claude/skills/` 更省事。两者可以并存，Claude Code 都会识别。
+:::
+
 ## 拉取技能并安装依赖
 
-在你要给 Claude Code 使用的工作区中执行（可将仓库放在任意目录，只要后续用 Claude Code 打开**包含** `atxswap` 的那一层为工作区或子路径即可）：
+挑好上面的路径后，把 ATX 技能克隆进去并安装依赖。
+
+**① 安装为个人技能（全局可用）**
 
 ```bash
-git clone https://github.com/agentswapx/skills.git
+mkdir -p ~/.claude/skills
+git clone https://github.com/agentswapx/skills.git /tmp/atxswap-skills
+cp -r /tmp/atxswap-skills/atxswap ~/.claude/skills/atxswap
+cd ~/.claude/skills/atxswap && npm install
 ```
+
+**② 安装为项目技能（仅当前项目）**
+
+在你的项目根目录下执行：
 
 ```bash
-cd skills/atxswap && npm install
+mkdir -p .claude/skills
+git clone https://github.com/agentswapx/skills.git /tmp/atxswap-skills
+cp -r /tmp/atxswap-skills/atxswap .claude/skills/atxswap
+cd .claude/skills/atxswap && npm install
 ```
 
-`npm install` 会拉取 ATX 所需 SDK，无需单独编译。若你已有自己的项目目录，也可以把 `skills` 作为子目录放进该项目再执行 `cd …/atxswap && npm install`。
+无论选哪种，`npm install` 都会从 npm 拉取 [`atxswap-sdk`](https://www.npmjs.com/package/atxswap-sdk)，无需单独编译。装好后目录结构应该是：
+
+```
+.claude/skills/atxswap/        # 或 ~/.claude/skills/atxswap/
+├── SKILL.md
+├── scripts/
+├── package.json
+└── node_modules/
+```
+
+::: info 提示
+- 上面用 `git clone` + `cp` 是为了只拷贝你需要的 `atxswap` 子目录。如果你愿意整库放在本机其他位置，也可以用软链：`ln -s /path/to/skills/atxswap ~/.claude/skills/atxswap`。
+- 升级时进入对应的 `atxswap/` 目录执行 `git pull && npm install`（软链方式只需在源仓库 `git pull`）。
+:::
 
 ### 自定义 RPC（可选）
 
@@ -43,9 +81,9 @@ export BSC_RPC_URL="https://your-rpc.example.com,https://bsc-rpc.publicnode.com"
 
 ## 在 Claude Code 里使用
 
-1. 用 **Claude Code** 打开包含本技能的工作区，例如你克隆的 `skills` 仓库根目录，或已包含 `atxswap` 文件夹的上层项目根目录。  
-2. 技能根目录为 `atxswap/`，主入口是其中的 **`SKILL.md`**。请保证该目录在你当前工作区内，且已完成上述 `npm install`。  
-3. 在对话中直接用自然语言描述要执行的操作；Claude Code 会按 `SKILL.md` 中约定的能力与安全规则调用 `scripts/` 下脚本。  
+1. 启动 / 重启 **Claude Code**，它会自动从 `~/.claude/skills/` 与当前项目 `.claude/skills/` 下加载所有合法的技能。  
+2. 项目技能仅当 Claude Code **当前打开的工作区**就是该项目时才会生效。  
+3. 在对话中直接用自然语言描述要执行的操作；Claude Code 会按 `SKILL.md` 里约定的能力和安全规则去调用 `scripts/` 下的脚本。需要显式触发时，也可以输入 `/atxswap` 指令。  
 
 不必在终端里手敲 `wallet.js`、`query.js` 等，除非你自行调试；日常由对话驱动即可。
 

@@ -19,19 +19,57 @@ Check versions:
 node -v && npm -v && git --version
 ```
 
+## Pick an install location
+
+Claude Code loads skills from two fixed directories — pick whichever one matches your use case:
+
+| Type | Path | When to use |
+|---|---|---|
+| ① Personal skill (global) | `~/.claude/skills/atxswap/SKILL.md` | Available in **every project** for the current user |
+| ② Project skill (current repo) | `<project-root>/.claude/skills/atxswap/SKILL.md` | Only available in the current project; can be checked into version control with the repo |
+
+::: tip Recommendation
+For team projects, commit `.claude/skills/` to version control so the skill becomes part of the project's tooling. For personal use, `~/.claude/skills/` is simpler. The two locations can coexist — Claude Code reads both.
+:::
+
 ## Get the skill and install dependencies
 
-Run the following in a location you will open with Claude Code (the workspace must **contain** the `atxswap` folder; you can nest the `skills` repo under a larger project if you prefer):
+Once you have decided on a path, clone the skill into it and install its dependencies.
+
+**① Install as a personal skill (global)**
 
 ```bash
-git clone https://github.com/agentswapx/skills.git
+mkdir -p ~/.claude/skills
+git clone https://github.com/agentswapx/skills.git /tmp/atxswap-skills
+cp -r /tmp/atxswap-skills/atxswap ~/.claude/skills/atxswap
+cd ~/.claude/skills/atxswap && npm install
 ```
+
+**② Install as a project skill (current repo only)**
+
+Run from your project root:
 
 ```bash
-cd skills/atxswap && npm install
+mkdir -p .claude/skills
+git clone https://github.com/agentswapx/skills.git /tmp/atxswap-skills
+cp -r /tmp/atxswap-skills/atxswap .claude/skills/atxswap
+cd .claude/skills/atxswap && npm install
 ```
 
-`npm install` pulls the ATX SDK — no separate build step. If you already have a project tree, you can place `skills` under it and run `cd …/atxswap && npm install` from there.
+Either way, `npm install` pulls [`atxswap-sdk`](https://www.npmjs.com/package/atxswap-sdk) from npm; there is no separate build step. The resulting layout is:
+
+```
+.claude/skills/atxswap/        # or ~/.claude/skills/atxswap/
+├── SKILL.md
+├── scripts/
+├── package.json
+└── node_modules/
+```
+
+::: info Tips
+- The `git clone` + `cp` pattern keeps only the `atxswap` subfolder. If you would rather track the whole `skills` repo somewhere else on disk, symlink it instead: `ln -s /path/to/skills/atxswap ~/.claude/skills/atxswap`.
+- To upgrade, `cd` into the corresponding `atxswap/` folder and run `git pull && npm install` (or just `git pull` in the source repo when using a symlink).
+:::
 
 ### Custom RPC (optional)
 
@@ -43,9 +81,9 @@ export BSC_RPC_URL="https://your-rpc.example.com,https://bsc-rpc.publicnode.com"
 
 ## Use it in Claude Code
 
-1. Open the workspace in **Claude Code** that contains this skill — for example the `skills` repo root after cloning, or a parent project root that includes the `atxswap` directory.  
-2. The skill root is `atxswap/`; the entry you care about is **`SKILL.md`**. Keep that path inside the workspace and ensure `npm install` has been run in `atxswap/`.  
-3. Describe what you need in natural language. Claude Code follows `SKILL.md` to invoke scripts under `scripts/` with the documented safety rules.  
+1. Start / restart **Claude Code**. It auto-loads every valid skill under `~/.claude/skills/` and the current project's `.claude/skills/`.  
+2. Project skills only activate when the Claude Code workspace is that project.  
+3. Describe what you need in natural language; Claude Code will follow `SKILL.md` to invoke scripts under `scripts/` with the documented safety rules. You can also trigger it explicitly with `/atxswap`.  
 
 You do not need to type `wallet.js`, `query.js`, and so on in a terminal for normal use — only if you are debugging the skill yourself.
 
