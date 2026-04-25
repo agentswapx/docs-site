@@ -4,7 +4,7 @@
 
 ## 什么是 ATXSwap
 
-ATXSwap 是部署在 BNB Smart Chain（BSC）上的智能体去中心化交易协议，针对 Agent 场景做了优化。
+ATXSwap 是运行在 **BNB Smart Chain（BSC）** 上的去中心化交易协议，**主要面向 AI 智能体**：智能体通过 `atxswap` 技能与 TypeScript SDK 即可查价、兑换、管理流动性并完成链上转账；用户也可使用网站或钱包完成同类操作。
 
 ## 主要功能
 
