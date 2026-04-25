@@ -1,12 +1,22 @@
 # Install ATX Skill on OpenClaw
 
-The ATX skill (`atxswap`) is published to the ClawHub skill library and can be installed with the **OpenClaw CLI** or the **ClawHub CLI**. After installation, your agent can autonomously perform on-chain operations: create wallets, query prices, trade tokens, manage wallets, provide liquidity, and transfer assets.
+The ATX skill (`atxswap`) is published to the ClawHub skill library. **We recommend** asking your OpenClaw agent in **natural language** to install it first; you can also install with the **OpenClaw CLI** or **ClawHub CLI** yourself. After installation, your agent can autonomously perform on-chain operations: create wallets, query prices, trade tokens, manage wallets, provide liquidity, and transfer assets.
 
 - **SDK on npm**: [`atxswap-sdk`](https://www.npmjs.com/package/atxswap-sdk)
 - **GitHub**: [agentswapx/skills](https://github.com/agentswapx/skills/tree/main/atxswap)
 - **ClawHub**: [atxswap on clawhub.ai](https://clawhub.ai/skills/atxswap)
 
 ## Installation
+
+### Recommended: Natural language (preferred)
+
+In your OpenClaw chat, ask in plain English to install the **ATX skill** (package name **`atxswap`**, published on ClawHub). For example:
+
+> "Please install the `atxswap` skill from ClawHub for me."  
+> "I want to trade ATX on-chain with ATXSwap—install the atxswap skill."  
+> "Add the atxswap / ATX trading skill from the ClawHub registry."
+
+The agent will run or guide the install for your environment (typically the same skill source as ClawHub). If that does not work in chat, use one of the CLI options below.
 
 ### Option 1: OpenClaw CLI
 
@@ -27,7 +37,7 @@ clawhub install atxswap --force
 The `--force` flag is required because ClawHub's VirusTotal scanner flags any wallet/keystore SDK as "suspicious" by default. This is expected for crypto tooling and does not indicate a real warning.
 :::
 
-### Option 3: Manual Install
+### Option 3: Manual install
 
 ```bash
 git clone https://github.com/agentswapx/skills.git
