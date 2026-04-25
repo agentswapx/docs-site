@@ -94,7 +94,7 @@ openclaw skills info atxswap
 |---|---|---|
 | 「帮我创建一个新钱包」 | `wallet.js create [name] --password <pwd>` | 创建新钱包 |
 | 「列出我所有的钱包」 | `wallet.js list` | 列出所有钱包及余额 |
-| 「把 0x… 的 keystore 导出来备份」 | `wallet.js export <address> [--out <file>]` | 导出钱包对应的**加密 keystore JSON**（不会暴露原始私钥） |
+| 「把 钱包 的 keystore 导出来备份」 | `wallet.js export <address> [--out <file>]` | 导出钱包对应的**加密 keystore JSON**（不会暴露原始私钥） |
 
 ### 查询
 

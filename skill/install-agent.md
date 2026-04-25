@@ -119,7 +119,7 @@ The first column is example phrasing for **Claude Code** (the prompt), the secon
 |---|---|---|
 | "Create a new wallet for me" | `wallet.js create [name] --password <pwd>` | Create a new wallet |
 | "List all my wallets" | `wallet.js list` | List all wallets and balances |
-| "Export the keystore for 0x… so I can back it up" | `wallet.js export <address> [--out <file>]` | Export the wallet's **encrypted keystore JSON** (the raw private key is never exposed) |
+| "Export the wallet keystore for backup" | `wallet.js export <address> [--out <file>]` | Export the wallet's **encrypted keystore JSON** (the raw private key is never exposed) |
 
 ### Queries
 
