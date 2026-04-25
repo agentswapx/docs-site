@@ -79,7 +79,10 @@ function sidebar(locale: 'en' | 'zh'): DefaultTheme.Sidebar {
         {
           text: '入门',
           collapsed: false,
-          items: [{ text: '快速开始', link: '/zh/guide/getting-started' }],
+          items: [
+            { text: '快速开始', link: '/zh/guide/getting-started' },
+            { text: '团队介绍', link: '/zh/guide/team' },
+          ],
         },
       ],
       '/zh/skill/': [
@@ -110,7 +113,10 @@ function sidebar(locale: 'en' | 'zh'): DefaultTheme.Sidebar {
       {
         text: 'Introduction',
         collapsed: false,
-        items: [{ text: 'Getting Started', link: '/guide/getting-started' }],
+        items: [
+          { text: 'Getting Started', link: '/guide/getting-started' },
+          { text: 'Team Introduction', link: '/guide/team' },
+        ],
       },
     ],
     '/skill/': [
