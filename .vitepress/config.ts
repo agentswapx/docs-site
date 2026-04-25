@@ -19,7 +19,7 @@ const jsonLd = [
       GITHUB_ORG,
       'https://www.npmjs.com/package/atxswap-sdk',
       'https://clawhub.ai/skills/atxswap',
-      'https://bscscan.com/token/0x82dbfD98AE6741C8506640CE235c6d95570EA638',
+      'https://bscscan.com/token/0x31bD373bDde9e65Ff681d2970b4b01B8b2C750e0',
     ],
   },
   {
