@@ -57,7 +57,7 @@ main().catch((error) => {
 | Gas | 所有写操作都需要 BNB 支付 gas |
 | RPC | 未配置时 SDK 会回落到内置的 8 个 BSC 公共 RPC 端点。生产环境建议显式设置 `BSC_RPC_URL`，可填单个地址，也可用逗号分隔多个地址（例如 `"https://primary,https://backup"`），技能层会解析为 `rpcUrls` 传给 SDK |
 | 默认手续费档位 | `2500`，即 `0.25%` |
-| 默认滑点 | `300` bps，即 `3%` |
+| 默认滑点 | `100` bps，即 `1%` |
 
 几个新手最容易忽略的点：
 
