@@ -5,14 +5,14 @@ const REPO_EDIT_BASE = 'https://github.com/agentswapx/docs-site/edit/main'
 const SITE_HOSTNAME = 'https://docs.atxswap.com'
 const SITE_OG_IMAGE = `${SITE_HOSTNAME}/og.png`
 const SITE_DESCRIPTION =
-  'ATXSwap official documentation — product guides and developer docs for the decentralized agent exchange protocol on BNB Chain.'
+  'ATXSwap official documentation — product guides and developer docs for the decentralized agent exchange protocol on BSC.'
 
 const jsonLd = [
   {
     '@context': 'https://schema.org',
     '@type': 'Organization',
     name: 'ATXSwap',
-    alternateName: 'Agent Token Exchange',
+    alternateName: 'Decentralized agent exchange protocol on BSC',
     url: 'https://www.atxswap.com',
     logo: `${SITE_HOSTNAME}/favicon.ico`,
     sameAs: [
@@ -164,7 +164,7 @@ export default defineConfig({
       {
         name: 'keywords',
         content:
-          'ATX, ATXSwap, Agent Token Exchange, agent exchange, BNB Chain, BSC, PancakeSwap V3, DeFi, AI agent trading, atxswap-sdk, ClawHub, OpenClaw, documentation',
+          'ATX, ATXSwap, decentralized agent exchange protocol, BSC, PancakeSwap V3, DeFi, AI agent trading, atxswap-sdk, ClawHub, OpenClaw, documentation',
       },
     ],
     ['meta', { property: 'og:type', content: 'website' }],

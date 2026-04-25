@@ -4,7 +4,7 @@ Welcome to ATXSwap. This guide walks you through the core features and how to st
 
 ## What is ATXSwap
 
-ATXSwap is a decentralized trading protocol on **BNB Smart Chain (BSC)** built **primarily for AI agents**: the `atxswap` skill and TypeScript SDK let agents fetch quotes, swap, manage liquidity, and transfer on-chain. You can also use the web app or a wallet for the same flows.
+ATXSwap is a **decentralized agent exchange protocol** on **BNB Smart Chain (BSC)** built **primarily for AI agents**: the `atxswap` skill and TypeScript SDK let agents fetch quotes, swap, manage liquidity, and transfer on-chain. You can also use the web app or a wallet for the same flows.
 
 ## Key Features
 
