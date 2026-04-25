@@ -14,7 +14,7 @@ ATX 技能（`atxswap`）已经发布到 ClawHub 技能库。**最推荐**用自
 
 在与 OpenClaw 的对话里，直接用中文说明要安装 **ATX 技能**（技能包名 **`atxswap`**，发布在 ClawHub）。例如：
 
-> 「请帮我从 ClawHub 安装 `atxswap` 技能」  
+> 「安装`atxswap`」  
 > 「我想用 ATXSwap 做链上交易，请安装 atxswap 技能」  
 > 「安装 ClawHub 上的 atxswap / ATX 交易技能」
 

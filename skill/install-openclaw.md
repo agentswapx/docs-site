@@ -14,7 +14,7 @@ For **[OpenCode](https://opencode.ai)** (load skills from local `SKILL.md` paths
 
 In your OpenClaw chat, ask in plain English to install the **ATX skill** (package name **`atxswap`**, published on ClawHub). For example:
 
-> "Please install the `atxswap` skill from ClawHub for me."  
+> "Install `atxswap`."  
 > "I want to trade ATX on-chain with ATXSwap—install the atxswap skill."  
 > "Add the atxswap / ATX trading skill from the ClawHub registry."
 
