@@ -1,6 +1,6 @@
 # Install the ATX Skill in Claude Code
 
-This page explains how to use **Claude Code** with the ATX skill (`atxswap`) to work with BSC on-chain assets: create wallets, check prices, trade, manage liquidity, and transfer — all in natural language, without hand-writing DApp code. The skill follows the [Agent Skills](https://github.com/anthropics/skills) convention via `SKILL.md`. For **OpenClaw** and other ClawHub-based installs, see [Install ATX Skill on OpenClaw](/skill/install-openclaw).
+This page explains how to use **Claude Code** with the ATX skill (`atxswap`) to work with BSC on-chain assets: create wallets, check prices, trade, manage liquidity, and transfer — all in natural language, without hand-writing DApp code. The skill follows the [Agent Skills](https://github.com/anthropics/skills) convention via `SKILL.md`. For **OpenClaw** and other ClawHub-based installs, see [Install ATX Skill on OpenClaw](/skill/install-openclaw). For **OpenCode** (local `SKILL.md` discovery), see [Install the ATX Skill on OpenCode](/skill/install-opencode).
 
 - **SDK on npm**: [`atxswap-sdk`](https://www.npmjs.com/package/atxswap-sdk)
 - **GitHub**: [agentswapx/skills](https://github.com/agentswapx/skills/tree/main/atxswap)
@@ -70,14 +70,6 @@ Either way, `npm install` pulls [`atxswap-sdk`](https://www.npmjs.com/package/at
 - The `git clone` + `cp` pattern keeps only the `atxswap` subfolder. If you would rather track the whole `skills` repo somewhere else on disk, symlink it instead: `ln -s /path/to/skills/atxswap ~/.claude/skills/atxswap`.
 - To upgrade, `cd` into the corresponding `atxswap/` folder and run `git pull && npm install` (or just `git pull` in the source repo when using a symlink).
 :::
-
-### Custom RPC (optional)
-
-By default the skill uses a built-in fallback of BSC public RPC endpoints. For a private or preferred node, set (comma‑separated, left‑to‑right priority):
-
-```bash
-export BSC_RPC_URL="https://your-rpc.example.com,https://bsc-rpc.publicnode.com"
-```
 
 ## Use it in Claude Code
 

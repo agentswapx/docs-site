@@ -6,6 +6,8 @@ The ATX skill (`atxswap`) is published to the ClawHub skill library. **We recomm
 - **GitHub**: [agentswapx/skills](https://github.com/agentswapx/skills/tree/main/atxswap)
 - **ClawHub**: [atxswap on clawhub.ai](https://clawhub.ai/skills/atxswap)
 
+For **[OpenCode](https://opencode.ai)** (load skills from local `SKILL.md` paths — see [Agent Skills](https://opencode.ai/docs/skills)), use [Install the ATX Skill on OpenCode](/skill/install-opencode).
+
 ## Installation
 
 ### Recommended: Natural language (preferred)

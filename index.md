@@ -25,6 +25,10 @@ features:
     details: Install the ATX Skill via the ClawHub registry so your OpenClaw agent can autonomously trade and manage assets.
     link: /skill/install-openclaw
     linkText: ClawHub install guide
+  - title: OpenCode
+    details: Place the atxswap skill under .opencode/skills/ and load it per OpenCode Agent Skills discovery.
+    link: /skill/install-opencode
+    linkText: Install on OpenCode
   - title: Built for Developers
     details: Comprehensive contract / SDK / API documentation that supports self-service integration and custom development.
     link: /dev/overview

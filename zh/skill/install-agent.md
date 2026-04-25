@@ -1,6 +1,6 @@
 # 在 Claude Code 中安装 ATX 技能
 
-本页说明如何在本机用 **Claude Code** 配合 ATX 技能（`atxswap`）操作 BSC 链上资产：创建钱包、查询价格、交易代币、管理流动性、转账等——用自然语言即可，无需自己写业务代码。技能使用同一套 [Agent Skills](https://github.com/anthropics/skills) 规范下的 `SKILL.md`；通过 **OpenClaw** 等其它方式安装时，可参见 [在 OpenClaw 中安装 ATX 技能](/zh/skill/install-openclaw)。
+本页说明如何在本机用 **Claude Code** 配合 ATX 技能（`atxswap`）操作 BSC 链上资产：创建钱包、查询价格、交易代币、管理流动性、转账等——用自然语言即可，无需自己写业务代码。技能使用同一套 [Agent Skills](https://github.com/anthropics/skills) 规范下的 `SKILL.md`；通过 **OpenClaw** 等其它方式安装时，可参见 [在 OpenClaw 中安装 ATX 技能](/zh/skill/install-openclaw)。使用 **OpenCode** 时，将技能按官方路径放置即可，见 [在 OpenCode 中安装 ATX 技能](/zh/skill/install-opencode)。
 
 - **SDK (npm)**: [`atxswap-sdk`](https://www.npmjs.com/package/atxswap-sdk)
 - **GitHub**: [agentswapx/skills](https://github.com/agentswapx/skills/tree/main/atxswap)
@@ -70,14 +70,6 @@ cd .claude/skills/atxswap && npm install
 - 上面用 `git clone` + `cp` 是为了只拷贝你需要的 `atxswap` 子目录。如果你愿意整库放在本机其他位置，也可以用软链：`ln -s /path/to/skills/atxswap ~/.claude/skills/atxswap`。
 - 升级时进入对应的 `atxswap/` 目录执行 `git pull && npm install`（软链方式只需在源仓库 `git pull`）。
 :::
-
-### 自定义 RPC（可选）
-
-默认会按内置的 BSC 公共 RPC 回退。若你有专用节点，可设置环境变量（支持逗号分隔、从左到右优先）：
-
-```bash
-export BSC_RPC_URL="https://your-rpc.example.com,https://bsc-rpc.publicnode.com"
-```
 
 ## 在 Claude Code 里使用
 

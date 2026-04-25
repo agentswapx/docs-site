@@ -6,6 +6,8 @@ ATX 技能（`atxswap`）已经发布到 ClawHub 技能库。**最推荐**用自
 - **GitHub**: [agentswapx/skills](https://github.com/agentswapx/skills/tree/main/atxswap)
 - **ClawHub**: [atxswap @ clawhub.ai](https://clawhub.ai/skills/atxswap)
 
+若使用 **[OpenCode](https://opencode.ai)**（从本机路径加载 `SKILL.md`，说明见 [Agent Skills](https://opencode.ai/docs/skills)），请见 [在 OpenCode 中安装 ATX 技能](/zh/skill/install-opencode)。
+
 ## 安装方式
 
 ### 推荐：自然语言（优先）

@@ -25,6 +25,10 @@ features:
     details: 通过 ClawHub 注册表安装 ATX 技能，让你的 OpenClaw 智能体自主完成交易与资产管理。
     link: /zh/skill/install-openclaw
     linkText: ClawHub 安装指南
+  - title: OpenCode
+    details: 将 atxswap 技能放在 .opencode/skills/，按 OpenCode 官方「Agent Skills」规则发现与加载。
+    link: /zh/skill/install-opencode
+    linkText: 在 OpenCode 中安装
   - title: 面向开发者
     details: 完整的合约 / SDK / API 文档，支持自助集成与二次开发。
     link: /zh/dev/overview
