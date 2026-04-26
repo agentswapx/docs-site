@@ -251,6 +251,40 @@ Why this is a good beginner example:
 - `slippageBps` works the same way as swap slippage
 - For the first run, `txHash` is the only result field you need to care about
 
+### Custom range preview
+
+If you want a custom range, preview the token ratio first so you do not guess the
+counter-asset amount:
+
+```typescript
+import { AtxClient, parseEther, formatUnits } from "atxswap-sdk";
+
+async function main() {
+  const client = new AtxClient();
+  await client.ready();
+
+  const quote = await client.liquidity.quoteAddLiquidity({
+    baseToken: "usdt",
+    amount: parseEther("0.1"),
+    range: { rangePercent: 20 },
+  });
+
+  console.log("tickLower", quote.range.tickLower);
+  console.log("tickUpper", quote.range.tickUpper);
+  console.log("ATX needed", formatUnits(quote.desiredAmounts.atx, 18));
+  console.log("USDT needed", formatUnits(quote.desiredAmounts.usdt, 18));
+}
+
+main().catch(console.error);
+```
+
+Recommended sequence for custom-range liquidity:
+
+1. Run `quoteAddLiquidity()`
+2. Show `desiredAmounts` to the user or operator
+3. Confirm the wallet has enough BNB, ATX, and USDT
+4. Execute `addLiquidity()` with the quoted amounts
+
 ## Troubleshooting
 
 These issues cover most first-time integration failures:
@@ -278,7 +312,7 @@ Once your first example is working, these are usually the next APIs worth learni
 | `wallet` | `create()`, `list()`, `load()`, `hasSavedPassword()`, `exportKeystore()` (returns the encrypted keystore JSON; raw private-key import/export is intentionally not exposed) |
 | `query` | `getPrice()`, `getBalance()`, `getQuote()`, `getPositions()` |
 | `swap` | `buy()`, `sell()`, `preview()` |
-| `liquidity` | `addLiquidity()`, `removeLiquidity()`, `collectFees()` |
+| `liquidity` | `quoteAddLiquidity()`, `addLiquidity()`, `removeLiquidity()`, `collectFees()` |
 | `transfer` | `sendAtx()`, `sendUsdt()`, `sendBnb()`, `sendToken()` |
 
 You can keep going with these resources:

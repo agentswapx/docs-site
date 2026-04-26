@@ -142,6 +142,8 @@ The first column is example phrasing for **Claude Code** (the prompt), the secon
 | Phrase (prompt) | Command | Description |
 |---|---|---|
 | "Add 100 ATX and 10 USDT of liquidity" | `liquidity.js add <atx> <usdt>` | Add liquidity |
+| "Preview adding 0.1 USDT of liquidity with a 20% price range" | `liquidity.js quote-add usdt 0.1 --range-percent 20` | Preview the ATX/USDT amounts needed for a custom range |
+| "Add 0.1 USDT of liquidity with a 20% price range" | `liquidity.js add --base-token usdt --amount 0.1 --range-percent 20` | Auto-balance the other token and add custom-range liquidity |
 | "Remove 50% from position 123" | `liquidity.js remove <tokenId> <percent>` | Remove a percentage of liquidity |
 | "Collect fees for position 123" | `liquidity.js collect <tokenId>` | Collect accrued LP fees |
 
@@ -161,6 +163,8 @@ The first column is example phrasing for **Claude Code** (the prompt), the secon
 - The **description** text summarizes the behavior; like the example phrases, it is for your understanding and does not constrain how you must speak.
 
 - Importing an existing private key is **not supported** — neither through natural-language prompts nor as a CLI subcommand. Claude Code will only **create** a fresh wallet for this skill instance. If you need to use an existing private key, manage it with your preferred wallet tooling instead.
+
+- For custom-range liquidity, the recommended flow is: preview with `liquidity.js quote-add`, show `estimatedAmounts`, then execute `liquidity.js add` after confirmation. Do not guess the second token amount from chat.
 
 :::
 

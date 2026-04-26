@@ -117,6 +117,8 @@ openclaw skills info atxswap
 | 口令 | 命令 | 说明 |
 |---|---|---|
 | 「加 100 ATX 和 10 USDT 的流动性」 | `liquidity.js add <atx> <usdt>` | 添加流动性 |
+| 「先预估一下 0.1 USDT、20% 区间的流动性配比」 | `liquidity.js quote-add usdt 0.1 --range-percent 20` | 预估自定义区间所需的 ATX/USDT 数量 |
+| 「按 0.1 USDT、20% 区间添加流动性」 | `liquidity.js add --base-token usdt --amount 0.1 --range-percent 20` | 自动补齐另一边代币并添加自定义区间流动性 |
 | 「把 123 号仓位撤掉 50%」 | `liquidity.js remove <tokenId> <percent>` | 按百分比移除流动性 |
 | 「收取 123 号仓位的费」 | `liquidity.js collect <tokenId>` | 收取 LP 累计手续费 |
 
@@ -136,6 +138,8 @@ openclaw skills info atxswap
 - 上表**说明**概括该行为或底层命令的大致作用，与口令一样可做理解用，不限制你必须怎么说。
 
 - 本技能**不支持导入已有私钥**——既不能通过对话口令导入，命令行也未提供该入口。智能体只会**新建**一个属于该技能实例的钱包；如需使用现有私钥，请使用你常用的钱包工具自行管理。
+
+- 自定义区间流动性推荐流程是：先用 `liquidity.js quote-add` 预估，向用户展示 `estimatedAmounts`，确认后再执行 `liquidity.js add`。不要直接根据对话内容猜另一边代币数量。
 
 :::
 

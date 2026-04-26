@@ -251,6 +251,39 @@ main().catch(console.error);
 - `slippageBps` 和交换时的滑点含义一致
 - 返回值先只看 `txHash` 就够了，确认交易成功后再继续研究仓位细节
 
+### 自定义区间预估
+
+如果要做自定义区间，建议先预估代币配比，不要直接猜另一边数量：
+
+```typescript
+import { AtxClient, parseEther, formatUnits } from "atxswap-sdk";
+
+async function main() {
+  const client = new AtxClient();
+  await client.ready();
+
+  const quote = await client.liquidity.quoteAddLiquidity({
+    baseToken: "usdt",
+    amount: parseEther("0.1"),
+    range: { rangePercent: 20 },
+  });
+
+  console.log("tickLower", quote.range.tickLower);
+  console.log("tickUpper", quote.range.tickUpper);
+  console.log("ATX needed", formatUnits(quote.desiredAmounts.atx, 18));
+  console.log("USDT needed", formatUnits(quote.desiredAmounts.usdt, 18));
+}
+
+main().catch(console.error);
+```
+
+自定义区间流动性推荐顺序：
+
+1. 先执行 `quoteAddLiquidity()`
+2. 向用户或操作员展示 `desiredAmounts`
+3. 确认钱包里 BNB、ATX、USDT 都足够
+4. 再用预估出的数量执行 `addLiquidity()`
+
 ## 常见问题与排错
 
 下面这些问题最常见，基本覆盖了大多数第一次接入失败的情况：
@@ -278,7 +311,7 @@ main().catch(console.error);
 | `wallet` | `create()`, `list()`, `load()`, `hasSavedPassword()`, `exportKeystore()`（返回加密的 keystore JSON；SDK 故意不提供导入或导出原始私钥的方法） |
 | `query` | `getPrice()`, `getBalance()`, `getQuote()`, `getPositions()` |
 | `swap` | `buy()`, `sell()`, `preview()` |
-| `liquidity` | `addLiquidity()`, `removeLiquidity()`, `collectFees()` |
+| `liquidity` | `quoteAddLiquidity()`, `addLiquidity()`, `removeLiquidity()`, `collectFees()` |
 | `transfer` | `sendAtx()`, `sendUsdt()`, `sendBnb()`, `sendToken()` |
 
 还可以继续参考这些资料：
