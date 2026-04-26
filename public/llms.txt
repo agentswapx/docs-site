@@ -22,7 +22,7 @@ Live frontend: [www.atxswap.com](https://www.atxswap.com). Docs site source: [gi
 
 - [Developer overview (English)](https://docs.atxswap.com/dev/overview) — High-level map of the SDK, contracts, and on-chain components.
 - [开发者概览（中文）](https://docs.atxswap.com/zh/dev/overview) — 中文版概览。
-- [SDK developer guide (English)](https://docs.atxswap.com/dev/sdk-guide) — Quick-start tutorial for `atxswap-sdk`: client config (including `rpcUrls` for the 8-endpoint BSC RPC fallback), wallet, query, swap, liquidity, and transfer modules.
+- [SDK developer guide (English)](https://docs.atxswap.com/dev/sdk-guide) — Quick-start tutorial for `atxswap-sdk`: client config (including `rpcUrls` for the 6-endpoint BSC RPC fallback), wallet, query, swap, liquidity, and transfer modules.
 - [SDK 开发者指南（中文）](https://docs.atxswap.com/zh/dev/sdk-guide) — 中文版 SDK 教程。
 
 ## External resources referenced from this site
