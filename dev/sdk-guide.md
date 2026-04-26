@@ -113,6 +113,42 @@ The most important fields to inspect are:
 - `quote.amountOut`: expected output amount
 - `quote.priceImpact`: estimated market impact of the trade
 
+### Preview LP fees before harvest
+
+When you need to decide whether an LP NFT is worth harvesting, do not rely only on
+the raw `tokensOwed0/1` fields from `positions()`. Use the SDK's collect preview
+helpers instead:
+
+```typescript
+import { AtxClient } from "atxswap-sdk";
+
+async function main() {
+  const client = new AtxClient();
+  await client.ready();
+
+  const positions = await client.query.getPositions("0xYourAddress", {
+    includeCollectableFees: true,
+  });
+
+  for (const position of positions) {
+    console.log("tokenId", position.tokenId.toString());
+    console.log("collectable0", (position.collectable0 ?? 0n).toString());
+    console.log("collectable1", (position.collectable1 ?? 0n).toString());
+  }
+
+  const preview = await client.query.previewCollectFees("0xYourAddress", 6770485n);
+  console.log("preview", preview.amount0.toString(), preview.amount1.toString());
+}
+
+main().catch(console.error);
+```
+
+Use these rules:
+
+1. `tokensOwed0/1` is the raw `positions()` output
+2. `collectable0/1` is the simulated `collect()` result and is the better harvest preview
+3. `previewCollectFees()` is best when you already know the target `tokenId`
+
 ## Wallets: Create Once, Auto-Unlock Later
 
 The SDK uses keystore-encrypted wallets. Do not hardcode raw private keys into your project.
@@ -294,6 +330,7 @@ These issues cover most first-time integration failures:
 | Errors after `client.ready()` | Unclear script flow or missing runtime dependencies | Initialize the client once per entry script and run on Node 18+ |
 | Quote fails or Quoter reverts | Unstable RPC, wrong network, simulation failure | Confirm BSC mainnet first, then switch to a stable RPC |
 | Swap transaction fails | Not enough BNB or insufficient asset balance | Run `getBalance()` first and confirm BNB, ATX, and USDT |
+| LP fees look like zero | Only checking `tokensOwed0/1` from `positions()` | Use `getPositions(..., { includeCollectableFees: true })` or `previewCollectFees()` before harvest |
 | Wallet cannot be loaded | Address not in keystore or password not saved | Check your wallet list, then pass the password explicitly or save it again |
 | Wrong amount behavior | Mixed up `parseEther` and `parseUnits` | Use `parseEther` for 18-decimal assets, otherwise use `parseUnits(value, decimals)` |
 
@@ -310,7 +347,7 @@ Once your first example is working, these are usually the next APIs worth learni
 | Module | Methods you will likely use first |
 |---|---|
 | `wallet` | `create()`, `list()`, `load()`, `hasSavedPassword()`, `exportKeystore()` (returns the encrypted keystore JSON; raw private-key import/export is intentionally not exposed) |
-| `query` | `getPrice()`, `getBalance()`, `getQuote()`, `getPositions()` |
+| `query` | `getPrice()`, `getBalance()`, `getQuote()`, `getPositions()`, `previewCollectFees()` |
 | `swap` | `buy()`, `sell()`, `preview()` |
 | `liquidity` | `quoteAddLiquidity()`, `addLiquidity()`, `removeLiquidity()`, `collectFees()` |
 | `transfer` | `sendAtx()`, `sendUsdt()`, `sendBnb()`, `sendToken()` |

@@ -104,6 +104,7 @@ openclaw skills info atxswap
 | 「这个地址 0x… 的余额多少」 | `query.js balance <address>` | 查询（指定地址）余额 |
 | 「用 10 USDT 买入能换多少 ATX」 | `query.js quote <buy\|sell> <amount>` | 买卖报价预览 |
 | 「我有哪些流动性仓位」 | `query.js positions <address>` | 查看 LP 仓位 |
+| 「先看一下 123 号仓位能收多少手续费」 | `query.js positions <address> <tokenId>` | 查看单个 LP 仓位及收割预览字段 |
 
 ### 交换
 
@@ -121,6 +122,12 @@ openclaw skills info atxswap
 | 「按 0.1 USDT、20% 区间添加流动性」 | `liquidity.js add --base-token usdt --amount 0.1 --range-percent 20` | 自动补齐另一边代币并添加自定义区间流动性 |
 | 「把 123 号仓位撤掉 50%」 | `liquidity.js remove <tokenId> <percent>` | 按百分比移除流动性 |
 | 「收取 123 号仓位的费」 | `liquidity.js collect <tokenId>` | 收取 LP 累计手续费 |
+
+推荐的手续费收割流程：
+
+1. 先执行 `query.js positions <address> <tokenId>`
+2. 查看 `collectableAtx` / `collectableUsdt`
+3. 确认值得收割后，再执行 `liquidity.js collect <tokenId>`
 
 ### 转账
 
@@ -140,6 +147,8 @@ openclaw skills info atxswap
 - 本技能**不支持导入已有私钥**——既不能通过对话口令导入，命令行也未提供该入口。智能体只会**新建**一个属于该技能实例的钱包；如需使用现有私钥，请使用你常用的钱包工具自行管理。
 
 - 自定义区间流动性推荐流程是：先用 `liquidity.js quote-add` 预估，向用户展示 `estimatedAmounts`，确认后再执行 `liquidity.js add`。不要直接根据对话内容猜另一边代币数量。
+
+- 收手续费时，应优先看 `query.js positions` 返回的 `collectable0/1` 或 `collectableAtx/collectableUsdt`。不要只看原始 `tokensOwed0/1`，因为这些字段仍为 `0` 时，仓位也可能已经可以收割。
 
 :::
 

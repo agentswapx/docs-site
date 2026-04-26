@@ -104,6 +104,7 @@ The first column is example phrasing you can say to your agent (the prompt), the
 | "Check the balance of 0x…" | `query.js balance <address>` | Check balance (for a given address) |
 | "Quote how much ATX 10 USDT would buy" | `query.js quote <buy\|sell> <amount>` | Buy/sell quote preview |
 | "Show my LP positions" | `query.js positions <address>` | View LP positions |
+| "Preview fees for LP position 123" | `query.js positions <address> <tokenId>` | View one LP position with harvest preview fields |
 
 ### Swaps
 
@@ -121,6 +122,12 @@ The first column is example phrasing you can say to your agent (the prompt), the
 | "Add 0.1 USDT of liquidity with a 20% price range" | `liquidity.js add --base-token usdt --amount 0.1 --range-percent 20` | Auto-balance the other token and add custom-range liquidity |
 | "Remove 50% from position 123" | `liquidity.js remove <tokenId> <percent>` | Remove a percentage of liquidity |
 | "Collect fees for position 123" | `liquidity.js collect <tokenId>` | Collect accrued LP fees |
+
+Recommended fee-harvest flow:
+
+1. Run `query.js positions <address> <tokenId>`
+2. Inspect `collectableAtx` / `collectableUsdt`
+3. Execute `liquidity.js collect <tokenId>` only when the preview is worth harvesting
 
 ### Transfers
 
@@ -140,6 +147,8 @@ The first column is example phrasing you can say to your agent (the prompt), the
 - Importing an existing private key is **not supported** — neither through natural-language prompts nor as a CLI subcommand. The skill only **creates** a fresh wallet for this skill instance. If you need to use an existing private key, manage it with your preferred wallet tooling instead.
 
 - For custom-range liquidity, the recommended flow is: preview with `liquidity.js quote-add`, show `estimatedAmounts`, then execute `liquidity.js add` after confirmation. Do not guess the second token amount from chat.
+
+- For fee harvests, prefer `collectable0/1` or `collectableAtx/collectableUsdt` from `query.js positions`. Do not use raw `tokensOwed0/1` as the only signal because a position can still have harvestable fees while those fields stay at `0`.
 
 :::
 

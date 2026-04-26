@@ -113,6 +113,41 @@ main().catch(console.error);
 - `quote.amountOut`: 预期能拿到多少目标资产
 - `quote.priceImpact`: 这次交易对价格的影响
 
+### 收割前先预览手续费
+
+如果你要判断某个 LP NFT 是否值得收割，不要只看 `positions()` 返回的
+`tokensOwed0/1`。应该优先使用 SDK 提供的手续费预览能力：
+
+```typescript
+import { AtxClient } from "atxswap-sdk";
+
+async function main() {
+  const client = new AtxClient();
+  await client.ready();
+
+  const positions = await client.query.getPositions("0xYourAddress", {
+    includeCollectableFees: true,
+  });
+
+  for (const position of positions) {
+    console.log("tokenId", position.tokenId.toString());
+    console.log("collectable0", (position.collectable0 ?? 0n).toString());
+    console.log("collectable1", (position.collectable1 ?? 0n).toString());
+  }
+
+  const preview = await client.query.previewCollectFees("0xYourAddress", 6770485n);
+  console.log("preview", preview.amount0.toString(), preview.amount1.toString());
+}
+
+main().catch(console.error);
+```
+
+可以这样理解：
+
+1. `tokensOwed0/1` 是 `positions()` 的原始字段
+2. `collectable0/1` 是模拟 `collect()` 后得到的更可靠预览值
+3. 如果你已经知道 `tokenId`，直接用 `previewCollectFees()` 最方便
+
 ## 钱包管理：先创建，再自动解锁
 
 SDK 使用 keystore 加密钱包，不推荐把私钥直接写进配置或代码。
@@ -293,6 +328,7 @@ main().catch(console.error);
 | `client.ready()` 后仍报初始化问题 | 脚本执行顺序混乱，或环境依赖不可用 | 确保每个入口只初始化一次 client，并优先使用 Node 18+ |
 | 报价失败或 Quoter 回退 | RPC 不稳定、网络不对、Quoter 模拟失败 | 先确认在 BSC 主网，再切换到稳定 RPC |
 | 交换发不出去 | 地址里没有足够的 BNB 或目标资产 | 先跑 `getBalance()` 看 BNB、ATX、USDT 是否充足 |
+| LP 手续费看起来是 0 | 只看了 `positions()` 里的 `tokensOwed0/1` | 收割前改用 `getPositions(..., { includeCollectableFees: true })` 或 `previewCollectFees()` |
 | 钱包无法加载 | 地址不在 keystore，或密码未保存 | 先 `list()`、再显式传密码或重新保存密码 |
 | 数量不对 | `parseEther` / `parseUnits` 用错 | 18 位资产可直接用 `parseEther`，其他情况显式写 `parseUnits(value, decimals)` |
 
@@ -309,7 +345,7 @@ main().catch(console.error);
 | 模块 | 你最先会用到的方法 |
 |---|---|
 | `wallet` | `create()`, `list()`, `load()`, `hasSavedPassword()`, `exportKeystore()`（返回加密的 keystore JSON；SDK 故意不提供导入或导出原始私钥的方法） |
-| `query` | `getPrice()`, `getBalance()`, `getQuote()`, `getPositions()` |
+| `query` | `getPrice()`, `getBalance()`, `getQuote()`, `getPositions()`, `previewCollectFees()` |
 | `swap` | `buy()`, `sell()`, `preview()` |
 | `liquidity` | `quoteAddLiquidity()`, `addLiquidity()`, `removeLiquidity()`, `collectFees()` |
 | `transfer` | `sendAtx()`, `sendUsdt()`, `sendBnb()`, `sendToken()` |
