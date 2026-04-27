@@ -100,6 +100,7 @@ openclaw skills info atxswap
 
 | 口令 | 命令 | 说明 |
 |---|---|---|
+| 「删除钱包 0x...」 | `wallet.js delete <address> --backup-confirmed yes --force-phrase "force delete wallet"` | 只有在确认已备份 keystore 且用户发送精确短语后才允许删除 |
 | 「查一下 ATX 现在多少钱」 | `query.js price` | 查询 ATX/USDT 价格 |
 | 「这个地址 0x… 的余额多少」 | `query.js balance <address>` | 查询（指定地址）余额 |
 | 「用 10 USDT 买入能换多少 ATX」 | `query.js quote <buy\|sell> <amount>` | 买卖报价预览 |
@@ -129,6 +130,13 @@ openclaw skills info atxswap
 2. 查看 `collectableAtx` / `collectableUsdt`
 3. 确认值得收割后，再执行 `liquidity.js collect <tokenId>`
 
+推荐的删除钱包流程：
+
+1. 先执行 `wallet.js export <address> --out <file>`，并告诉用户 keystore 保存位置
+2. 要求用户明确确认备份完成
+3. 再要求用户明确发送 `force delete wallet`
+4. 仅在这两步都完成后，才执行 `wallet.js delete <address> --backup-confirmed yes --force-phrase "force delete wallet"`
+
 ### 转账
 
 | 口令 | 命令 | 说明 |
@@ -149,6 +157,8 @@ openclaw skills info atxswap
 - 自定义区间流动性推荐流程是：先用 `liquidity.js quote-add` 预估，向用户展示 `estimatedAmounts`，确认后再执行 `liquidity.js add`。不要直接根据对话内容猜另一边代币数量。
 
 - 收手续费时，应优先看 `query.js positions` 返回的 `collectable0/1` 或 `collectableAtx/collectableUsdt`。不要只看原始 `tokensOwed0/1`，因为这些字段仍为 `0` 时，仓位也可能已经可以收割。
+
+- 删除钱包是双重确认操作：用户既要确认加密 keystore 已经备份完成，也必须明确发送 `force delete wallet`，两者缺一不可。
 
 :::
 

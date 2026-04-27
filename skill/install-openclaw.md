@@ -100,6 +100,7 @@ The first column is example phrasing you can say to your agent (the prompt), the
 
 | Phrase (prompt) | Command | Description |
 |---|---|---|
+| "Delete wallet 0x..." | `wallet.js delete <address> --backup-confirmed yes --force-phrase "force delete wallet"` | Delete a wallet only after backup confirmation and the exact force phrase |
 | "What is the current ATX price?" | `query.js price` | Query ATX/USDT price |
 | "Check the balance of 0x…" | `query.js balance <address>` | Check balance (for a given address) |
 | "Quote how much ATX 10 USDT would buy" | `query.js quote <buy\|sell> <amount>` | Buy/sell quote preview |
@@ -129,6 +130,13 @@ Recommended fee-harvest flow:
 2. Inspect `collectableAtx` / `collectableUsdt`
 3. Execute `liquidity.js collect <tokenId>` only when the preview is worth harvesting
 
+Recommended wallet-deletion flow:
+
+1. Run `wallet.js export <address> --out <file>` and tell the user where the keystore was saved
+2. Ask the user to confirm the backup is complete
+3. Require the user to explicitly send `force delete wallet`
+4. Only then run `wallet.js delete <address> --backup-confirmed yes --force-phrase "force delete wallet"`
+
 ### Transfers
 
 | Phrase (prompt) | Command | Description |
@@ -149,6 +157,8 @@ Recommended fee-harvest flow:
 - For custom-range liquidity, the recommended flow is: preview with `liquidity.js quote-add`, show `estimatedAmounts`, then execute `liquidity.js add` after confirmation. Do not guess the second token amount from chat.
 
 - For fee harvests, prefer `collectable0/1` or `collectableAtx/collectableUsdt` from `query.js positions`. Do not use raw `tokensOwed0/1` as the only signal because a position can still have harvestable fees while those fields stay at `0`.
+
+- Wallet deletion is a two-step safety action: the user must confirm the keystore backup, and must also explicitly send `force delete wallet` before the delete command is allowed.
 
 :::
 
