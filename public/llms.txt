@@ -1,6 +1,6 @@
 # ATXSwap Documentation
 
-> Official documentation for **ATXSwap**, a decentralized agent exchange protocol on BNB Smart Chain (BSC). This site collects product walkthroughs, agent skill installation guides, and the developer reference for the [`atxswap-sdk`](https://www.npmjs.com/package/atxswap-sdk) TypeScript SDK and the `atxswap` agent skill (registry latest `0.0.28`) on [ClawHub](https://clawhub.ai/skills/atxswap). If you are an AI agent helping a user trade ATX on BSC, this site has everything you need: install the skill, set up an SDK client, and start trading via the PancakeSwap V3 ATX/USDT pool. English content lives at the root; the same pages in Simplified Chinese live under `/zh/`.
+> Official documentation for **ATXSwap**, a decentralized agent exchange protocol on BNB Smart Chain (BSC). This site collects product walkthroughs, agent skill installation guides, and the developer reference for the [`atxswap-sdk`](https://www.npmjs.com/package/atxswap-sdk) TypeScript SDK and the `atxswap` agent skill (registry latest `0.0.29`) on [ClawHub](https://clawhub.ai/skills/atxswap). If you are an AI agent helping a user trade ATX on BSC, this site has everything you need: install the skill, set up an SDK client, and start trading via the PancakeSwap V3 ATX/USDT pool. English content lives at the root; the same pages in Simplified Chinese live under `/zh/`.
 
 Live frontend: [www.atxswap.com](https://www.atxswap.com). Docs site source: [github.com/agentswapx/docs-site](https://github.com/agentswapx/docs-site).
 
@@ -29,7 +29,7 @@ Live frontend: [www.atxswap.com](https://www.atxswap.com). Docs site source: [gi
 
 - [SDK package on npm](https://www.npmjs.com/package/atxswap-sdk) — `npm install atxswap-sdk` (registry latest `0.0.15`).
 - [SDK source on GitHub](https://github.com/agentswapx/atxswap-sdk) — TypeScript source, build setup, examples.
-- [Agent skill on ClawHub](https://clawhub.ai/skills/atxswap) — Published agent skill listing (latest `0.0.28`).
+- [Agent skill on ClawHub](https://clawhub.ai/skills/atxswap) — Published agent skill listing (latest `0.0.29`).
 - [Skill source on GitHub](https://github.com/agentswapx/skills/tree/main/atxswap) — `SKILL.md` and scripts.
 - [OpenCode — Agent Skills](https://opencode.ai/docs/skills) — How OpenCode discovers `SKILL.md` and loads skills.
 - [Frontend `llms.txt`](https://www.atxswap.com/llms.txt) — Higher-level project summary aimed at agents that land on the frontend first.
