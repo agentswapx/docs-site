@@ -116,6 +116,11 @@ This table is the same as the **Phrase quick reference** on [Install ATX Skill o
 | "Remove 50% from position 123" | `liquidity.js remove <tokenId> <percent>` | Remove a percentage of liquidity |
 | "Collect fees for position 123" | `liquidity.js collect <tokenId>` | Collect accrued LP fees |
 
+`liquidity.js remove <tokenId> <percent>` already sends a single on-chain `multicall`:
+`decreaseLiquidity` -> `collect` -> and when `percent = 100`, `burn`.
+So a full removal already collects withdrawable funds before burning the LP NFT. After a successful `remove ... 100`,
+running `collect` again for the same `tokenId` is expected to fail because the position no longer exists.
+
 ### Transfers
 
 | Phrase (prompt) | Command | Description |

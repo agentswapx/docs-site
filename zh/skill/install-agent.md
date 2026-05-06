@@ -155,6 +155,11 @@ Claude 会引导你设置密码；密码可保存在系统安全存储，后续�
 2. 查看 `collectableAtx` / `collectableUsdt`
 3. 确认值得收割后，再执行 `liquidity.js collect <tokenId>`
 
+`liquidity.js remove <tokenId> <percent>` 现在本身就会发起一笔链上 `multicall`：
+`decreaseLiquidity` -> `collect` -> 且当 `percent = 100` 时再 `burn`。
+因此 100% 移除会在销毁 LP NFT 前自动收走当前可提取资金。若 `remove ... 100` 已成功，再对同一个
+`tokenId` 执行 `collect` 报错是预期行为，因为该头寸已不存在。
+
 推荐的删除钱包流程：
 
 1. 先执行 `wallet.js export <address> --out <file>`，并告诉用户 keystore 保存位置

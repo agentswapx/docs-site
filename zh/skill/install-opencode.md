@@ -116,6 +116,11 @@
 | 「把 123 号仓位撤掉 50%」 | `liquidity.js remove <tokenId> <percent>` | 按百分比移除流动性 |
 | 「收取 123 号仓位的费」 | `liquidity.js collect <tokenId>` | 收取 LP 累计手续费 |
 
+`liquidity.js remove <tokenId> <percent>` 现在本身就会发起一笔链上 `multicall`：
+`decreaseLiquidity` -> `collect` -> 且当 `percent = 100` 时再 `burn`。
+因此 100% 移除会在销毁 LP NFT 前自动收走当前可提取资金。若 `remove ... 100` 已成功，再对同一个
+`tokenId` 执行 `collect` 报错是预期行为，因为该头寸已不存在。
+
 ### 转账
 
 | 口令 | 命令 | 说明 |

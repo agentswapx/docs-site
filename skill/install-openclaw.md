@@ -130,6 +130,11 @@ Recommended fee-harvest flow:
 2. Inspect `collectableAtx` / `collectableUsdt`
 3. Execute `liquidity.js collect <tokenId>` only when the preview is worth harvesting
 
+`liquidity.js remove <tokenId> <percent>` already sends a single on-chain `multicall`:
+`decreaseLiquidity` -> `collect` -> and when `percent = 100`, `burn`.
+So a full removal already collects withdrawable funds before burning the LP NFT. After a successful `remove ... 100`,
+running `collect` again for the same `tokenId` is expected to fail because the position no longer exists.
+
 Recommended wallet-deletion flow:
 
 1. Run `wallet.js export <address> --out <file>` and tell the user where the keystore was saved
